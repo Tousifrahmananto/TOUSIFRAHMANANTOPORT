@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ─────────────────────────────────────────────────
-       2c. FORMSUBMIT REDIRECT FIX
-       Set _next to the full absolute URL before submit so
-       FormSubmit redirects back to THIS page, not its own site.
+       2c. WEB3FORMS REDIRECT FIX
+       Set redirect URL to the full absolute URL before submit so
+       Web3Forms redirects back to THIS page, not its own site.
        Works on any Vercel domain automatically.
     ───────────────────────────────────────────────── */
     const contactForm = document.getElementById('contact-form');

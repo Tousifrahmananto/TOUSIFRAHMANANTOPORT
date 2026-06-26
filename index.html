@@ -468,25 +468,25 @@
 
             </div>
 
-            <!-- Right: FormSubmit.co form — works on Vercel (HTTPS) -->
+            <!-- Right: Web3Forms form — works on Vercel, no monthly reactivation -->
             <div class="contact-container" style="margin: 0;">
                 <!--
-                    FormSubmit.co — free, no backend needed.
-                    First submission triggers a one-time activation email — click confirm,
-                    then all future submissions land directly in your inbox.
+                    Web3Forms — free, no backend needed, no 30-day reactivation.
+                    IMPORTANT: Get your access key from https://web3forms.com/ and paste it below.
                 -->
-                <form action="https://formsubmit.co/tousif.rahman.anto@g.bracu.ac.bd" method="POST" id="contact-form">
+                <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                    <!-- Replace YOUR_ACCESS_KEY_HERE with your actual Web3Forms access key -->
+                    <input type="hidden" name="access_key" value="7a6a0642-e63d-4ae0-be72-a1222cf19c23">
+                    
                     <!-- Email subject line -->
-                    <input type="hidden" name="_subject" value="New Portfolio Contact: CSE 391">
+                    <input type="hidden" name="subject" value="New Portfolio Contact: CSE 391">
                     <!--
-                        _next is set dynamically by JS below so it always points back
-                        to YOUR page (not FormSubmit's site), on any domain / Vercel URL.
+                        redirect is set dynamically by JS below so it always points back
+                        to YOUR page, on any domain / Vercel URL.
                     -->
-                    <input type="hidden" name="_next" id="form-next-url" value="">
-                    <!-- Skip FormSubmit captcha (HTML5 validation handles it) -->
-                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="redirect" id="form-next-url" value="">
                     <!-- Honeypot — bots fill it, humans can't see it -->
-                    <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                     <div class="form-group">
                         <label for="contact-name">Your Name</label>
