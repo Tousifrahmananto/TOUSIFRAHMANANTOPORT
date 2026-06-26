@@ -187,5 +187,25 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     sections.forEach((s) => activeObserver.observe(s));
+    /* ─────────────────────────────────────────────────
+       6. PAGE LOCATION & LAST MODIFIED
+    ───────────────────────────────────────────────── */
+    const pageLocEl = document.getElementById('page-location');
+    const lastModEl = document.getElementById('last-modified');
+
+    if (pageLocEl) {
+        pageLocEl.textContent = window.location.href;
+    }
+
+    if (lastModEl) {
+        const lastMod = new Date(document.lastModified);
+        lastModEl.textContent = lastMod.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
 
 });
