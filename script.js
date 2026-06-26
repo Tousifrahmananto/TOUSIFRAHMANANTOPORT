@@ -67,6 +67,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ─────────────────────────────────────────────────
+       2c. FORMSUBMIT REDIRECT FIX
+       Set _next to the full absolute URL before submit so
+       FormSubmit redirects back to THIS page, not its own site.
+       Works on any Vercel domain automatically.
+    ───────────────────────────────────────────────── */
+    const contactForm = document.getElementById('contact-form');
+    const nextUrlInput = document.getElementById('form-next-url');
+    if (contactForm && nextUrlInput) {
+        // Build: https://your-site.vercel.app/index.html?sent=1
+        const absoluteRedirect = window.location.origin
+            + window.location.pathname
+            + '?sent=1';
+        // Set it immediately (also handles any pre-render edge cases)
+        nextUrlInput.value = absoluteRedirect;
+        // Re-confirm on actual submit event (defensive)
+        contactForm.addEventListener('submit', () => {
+            nextUrlInput.value = window.location.origin
+                + window.location.pathname
+                + '?sent=1';
+        });
+    }
+
+    /* ─────────────────────────────────────────────────
        3. SCROLL REVEAL — IntersectionObserver
        CSS owns all opacity / transform values.
        JS only adds / removes the class ".revealed".

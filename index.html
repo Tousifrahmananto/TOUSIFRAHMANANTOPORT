@@ -472,8 +472,11 @@
                 >
                     <!-- Email subject line -->
                     <input type="hidden" name="_subject" value="New Portfolio Contact: CSE 391">
-                    <!-- Redirect back here with ?sent=1 so JS shows the success banner -->
-                    <input type="hidden" name="_next" value="?sent=1">
+                    <!--
+                        _next is set dynamically by JS below so it always points back
+                        to YOUR page (not FormSubmit's site), on any domain / Vercel URL.
+                    -->
+                    <input type="hidden" name="_next" id="form-next-url" value="">
                     <!-- Skip FormSubmit captcha (HTML5 validation handles it) -->
                     <input type="hidden" name="_captcha" value="false">
                     <!-- Honeypot — bots fill it, humans can't see it -->
