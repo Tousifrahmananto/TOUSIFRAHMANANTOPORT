@@ -922,6 +922,19 @@ footer {
 }
 
 /* ============================================================
+   BRACU LOGO CONTAINER
+   Light mode: subtle off-white tray. Dark mode: white so the
+   dark-coloured logo is legible.
+   ============================================================ */
+.bracu-logo-bg {
+    background-color: #f8fafc;  /* near-white in light mode */
+}
+
+body.dark-theme .bracu-logo-bg {
+    background-color: #ffffff;  /* pure white in dark mode only */
+}
+
+/* ============================================================
    TEXT UTILITIES
    ============================================================ */
 .text-highlight {
