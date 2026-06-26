@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Personal homepage of Tousif Rahman Anto, a CSE student at BRAC University specializing in full-stack development, AI integration, and esports technology.">
+    <meta name="author" content="Tousif Rahman Anto">
+    <title>Tousif Rahman Anto | Personal Web Page</title>
+    <!-- External CSS Connection -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS (Sparingly used for minor design adjustments to satisfy assignment requirement) -->
+    <style>
+        .custom-welcome-text {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .bold-quote-intro {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Moving mesh gradient background (fixed, behind all content) -->
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Tousif Rahman Anto</a>
+            <nav>
+                <ul>
+                    <!-- Anchor links for local page jumping -->
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#lists">Interests</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Internal links to other pages -->
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <!-- Theme Toggle Switch -->
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">🌙</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="hero-section container">
+        <div class="hero-content">
+            <p class="hero-subtitle">Lead Full-Stack Developer &amp; AI Researcher</p>
+            <h1 class="hero-title">Hi, I'm <span class="hero-name">Tousif</span>.</h1>
+            <p class="custom-welcome-text text-italic">Welcome to my personal homepage and web hub!</p>
+            <p class="hero-description">
+                I am a Computer Science and Engineering student at <a href="https://www.bracu.ac.bd" target="_blank"
+                    rel="noopener noreferrer">BRAC University</a> with hands-on experience in full-stack web
+                development, real-time API integrations, and AI/LLM tooling. I build and ship systems using TypeScript,
+                React.js, Node.js, and Django. Currently, I am seeking internships and entry-level software engineering
+                roles focused on scalable web systems and AI-enabled products.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="projects.html" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <!-- Stored Locally (SVG Vector Avatar) -->
+            <img src="images/IMG_1283.JPG" alt="Tousif Rahman Anto Avatar" class="profile-img">
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="card-grid">
+            <div class="card" style="grid-column: span 2;"> <!-- Inline CSS used sparingly for layout tweak -->
+                <div
+                    style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 5px;">BRAC University</h3>
+                        <p class="text-italic" style="color: var(--text-secondary); margin-bottom: 15px;">Bachelor of
+                            Science in Computer Science &amp; Engineering</p>
+                    </div>
+                    <span class="tag tag-tech" style="font-size: 0.9rem; padding: 6px 12px;">2022 &ndash; Present</span>
+                </div>
+
+                <!-- Web-linked image representing university context -->
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+                    alt="University Campus Study Concept"
+                    style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin: 15px 0; border: 1px solid var(--border-color);" />
+
+                <p style="margin-bottom: 15px;">
+                    My studies at BRAC University focus on building a strong foundation in core computer science
+                    subjects. I am particularly interested in <span class="text-highlight">Machine Learning</span>,
+                    <span class="text-highlight">Web Development</span>, and <span class="text-highlight">Cyber
+                        Security</span>.
+                </p>
+                <h4 style="font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Completed Coursework
+                    Includes:</h4>
+                <ul style="padding-left: 20px; line-height: 1.8;">
+                    <li>Data Structures &amp; Algorithms</li>
+                    <li>Object-Oriented Programming (OOP)</li>
+                    <li>Database Management Systems</li>
+                    <li>Operating Systems</li>
+                    <li>Software Engineering</li>
+                    <li>Web Development &amp; Internet Programming</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p
+            style="text-align: center; max-width: 700px; margin: -20px auto 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            A comprehensive toolkit organized by category, representing my hands-on experience with languages,
+            frameworks, databases, and development tools I use daily.
+        </p>
+        <div class="skills-container">
+            <div class="card">
+                <h3 class="card-title">🔤 Languages</h3>
+                <ul class="skills-list">
+                    <li>TypeScript</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>Java</li>
+                    <li>Lua</li>
+                    <li>Dart</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="card-title">🌐 Web & Backend</h3>
+                <ul class="skills-list">
+                    <li>React.js</li>
+                    <li>Next.js</li>
+                    <li>Node.js</li>
+                    <li>Express.js</li>
+                    <li>Django</li>
+                    <li>REST APIs</li>
+                    <li>WebSockets</li>
+                    <li>TailwindCSS</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="card-title">🗄️ Databases & Security</h3>
+                <ul class="skills-list">
+                    <li>MongoDB</li>
+                    <li>PostgreSQL</li>
+                    <li>Vector DBs</li>
+                    <li>JWT Auth</li>
+                    <li>RBAC</li>
+                    <li>CSP</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="card-title">🤖 AI & Tooling</h3>
+                <ul class="skills-list">
+                    <li>OpenAI API</li>
+                    <li>Groq</li>
+                    <li>Gemini API</li>
+                    <li>LangChain</li>
+                    <li>Git & Docker</li>
+                    <li>Postman</li>
+                    <li>Unit Testing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Education Section -->
+    <section class="container" style="padding: 80px 0;">
+        <h2 class="section-title">Teaching & Mentorship</h2>
+        <p
+            style="text-align: center; max-width: 700px; margin: -20px auto 30px; color: var(--text-secondary); font-size: 1.05rem;">
+            Committed to sharing knowledge and nurturing the next generation of developers through structured curriculum
+            and hands-on mentorship.
+        </p>
+        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            <div class="teaching-card">
+                <div class="teaching-header">
+                    <span class="teaching-icon">👨‍🏫</span>
+                    <div class="teaching-title">Coding Instructor</div>
+                </div>
+                <div class="teaching-meta">Dreamers Academy | 2024 – 2025 | Dhaka, Bangladesh</div>
+                <p class="teaching-description">
+                    Taught beginner-friendly Python syntax, control flow, functions, and problem-solving strategies to
+                    children. Designed interactive lessons and provided individualized feedback.
+                </p>
+                <ul class="teaching-highlights">
+                    <li>Developed Python curriculum for young learners</li>
+                    <li>Built custom Lua curriculum for Roblox Studio game development</li>
+                    <li>Created positive learning environment with hands-on problem-solving</li>
+                </ul>
+            </div>
+
+            <div class="teaching-card">
+                <div class="teaching-header">
+                    <span class="teaching-icon">💼</span>
+                    <div class="teaching-title">Curriculum Developer</div>
+                </div>
+                <div class="teaching-meta">Dreamers Academy | 2024 – 2025 | Dhaka, Bangladesh</div>
+                <p class="teaching-description">
+                    Designed structured, milestone-based curricula to help new learners transition into software
+                    development fundamentals. Focused on practical application and progressive skill building.
+                </p>
+                <ul class="teaching-highlights">
+                    <li>Structured milestone-based learning paths</li>
+                    <li>Integrated game development concepts for student engagement</li>
+                    <li>Supported new learner transitions to software development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="container" style="padding: 80px 0;">
+        <h2 class="section-title">Professional Experience</h2>
+        <p
+            style="text-align: center; max-width: 700px; margin: -20px auto 40px; color: var(--text-secondary); font-size: 1.05rem;">
+            My journey in tech, esports operations, community management, and leadership roles across diverse
+            organizations.
+        </p>
+        <div class="experience-container">
+            <div class="experience-item">
+                <div class="exp-date">2024 – Present</div>
+                <div class="exp-marker"></div>
+                <div class="exp-content">
+                    <div class="exp-title">Lead Full-Stack Developer</div>
+                    <div class="exp-role">AFK Productions | Dhaka, Bangladesh</div>
+                    <div class="exp-description">
+                        Built and deployed an esports tournament management platform using MERN stack. Engineered an
+                        automated bracket system supporting 3 tournament formats (Single Elimination, Double
+                        Elimination, Round Robin) using Fisher-Yates shuffle algorithm. Implemented real-time
+                        bidirectional communication using Socket.IO and designed secure REST APIs with JWT
+                        authentication and RBAC for 4 user roles.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">2024 – Present</div>
+                <div class="exp-marker"></div>
+                <div class="exp-content">
+                    <div class="exp-title">Head of Human Resource Management</div>
+                    <div class="exp-role">AFK Productions | Dhaka, Bangladesh</div>
+                    <div class="exp-description">
+                        Managed a crew of 25+ members and coordinated logistics, scheduling, and communication for
+                        esports events. Oversaw recruitment, onboarding, and team coordination across multiple
+                        tournament operations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">2024 – Present</div>
+                <div class="exp-marker"></div>
+                <div class="exp-content">
+                    <div class="exp-title">Human Resource Management</div>
+                    <div class="exp-role">Robotics Club of BRAC University | Dhaka, Bangladesh</div>
+                    <div class="exp-description">
+                        Managed membership and recruitment for the club and organized workshops and events to promote
+                        robotics. Coordinated student recruitment drives, skill development workshops, and
+                        national-level robotic competitions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">2024 – Present</div>
+                <div class="exp-marker"></div>
+                <div class="exp-content">
+                    <div class="exp-title">Management / Discord Moderator</div>
+                    <div class="exp-role">MercenarieZ | Remote, Bangladesh</div>
+                    <div class="exp-description">
+                        Managed Discord moderation and community operations, including scheduling, announcements, and
+                        event logistics. Coordinated tasks with staff and tournament teams while maintaining issue
+                        trackers and escalation notes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">2022 – 2024</div>
+                <div class="exp-marker"></div>
+                <div class="exp-content">
+                    <div class="exp-title">Management Assistant</div>
+                    <div class="exp-role">GR | Graphite | Dhaka, Bangladesh</div>
+                    <div class="exp-description">
+                        Helped organize one of the largest esports events in Bangladesh and collaborated with RIOT on
+                        official events. Managed sponsor and partner communication while supporting budgeting and vendor
+                        coordination.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Awards Section -->
+    <section class="container" style="padding: 80px 0;">
+        <h2 class="section-title">Leadership & Recognition</h2>
+        <p
+            style="text-align: center; max-width: 700px; margin: -20px auto 40px; color: var(--text-secondary); font-size: 1.05rem;">
+            Recognized for excellence in leadership, selected from global pools, and contributing to social impact
+            initiatives worldwide.
+        </p>
+        <div class="card-grid">
+            <div class="achievement-badge">
+                <div class="badge-icon">🏆</div>
+                <div class="badge-title">Millennium Fellowship Program</div>
+                <div class="badge-subtitle">Global Recognition</div>
+                <div class="badge-description">
+                    Selected as a Fellow for the Class of 2025 from 60,396 applicants worldwide by UNAI & MCN to develop
+                    a student social impact project centered on mental health and student wellbeing.
+                </div>
+            </div>
+
+            <div class="achievement-badge">
+                <div class="badge-icon">📊</div>
+                <div class="badge-title">Global Application Committee (GAC)</div>
+                <div class="badge-subtitle">2026 – Present</div>
+                <div class="badge-description">
+                    Serving as a GAC member evaluating global program applications using data-driven, rubric-based
+                    scoring systems. Assessing scalability, feasibility, and impact metrics of proposed social
+                    innovation projects.
+                </div>
+            </div>
+
+            <div class="achievement-badge">
+                <div class="badge-icon">🎓</div>
+                <div class="badge-title">Leadership Development Fellow</div>
+                <div class="badge-subtitle">UNAI & MCN | 2025</div>
+                <div class="badge-description">
+                    Participated in a semester-long leadership development fellowship with focus on student life and
+                    mental health advocacy. Collaborated across cross-cultural teams to drive social impact initiatives.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote & Lists Section -->
+    <section id="lists" class="container">
+        <h2 class="section-title">Favorite Motto &amp; Collections</h2>
+
+        <div class="bold-quote-intro" style="text-align: center; margin-bottom: -15px;">Favorite Motto</div>
+        <div class="quote-box">
+            "The best way to predict the future is to invent it. By coding, building, and engineering, we convert ideas
+            into software that changes lives."
+            <span class="quote-author">&mdash; Personal Motto</span>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">My Favorite Sci-Fi
+                Books &amp; Movies</h3>
+            <!-- Ordered list requirement -->
+            <ol class="custom-list">
+                <li>
+                    <span><span class="rank">1.</span> Dune (Novel by Frank Herbert)</span>
+                    <span class="tag tag-tech">Sci-Fi</span>
+                </li>
+                <li>
+                    <span><span class="rank">2.</span> Interstellar (Directed by Christopher Nolan)</span>
+                    <span class="tag tag-accent">Movie</span>
+                </li>
+                <li>
+                    <span><span class="rank">3.</span> Neuromancer (Novel by William Gibson)</span>
+                    <span class="tag tag-tech">Cyberpunk</span>
+                </li>
+                <li>
+                    <span><span class="rank">4.</span> Mr. Robot (TV Series)</span>
+                    <span class="tag tag-accent">Tech</span>
+                </li>
+                <li>
+                    <span><span class="rank">5.</span> The Matrix (Directed by the Wachowskis)</span>
+                    <span class="tag tag-accent">Sci-Fi</span>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Contact Form (Bonus Challenge #1) -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p style="text-align: center; max-width: 600px; margin: -20px auto 36px; color: var(--text-secondary);">
+            Have a project idea, course question, or want to collaborate?
+            Reach out directly through the form or connect via
+            <a href="https://discord.com/invite/cse391" target="_blank" rel="noopener noreferrer">CSE 391 Discord</a>.
+            You can also visit <a href="https://www.bracu.ac.bd" target="_blank" rel="noopener noreferrer">BRAC
+                University</a>.
+        </p>
+
+        <!-- Success banner shown after form submission -->
+        <div id="form-success" style="
+            display: none;
+            background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(217,70,239,0.1));
+            border: 1px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px 28px;
+            text-align: center;
+            max-width: 580px;
+            margin: 0 auto 32px;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1rem;
+        ">
+            ✅ Message sent! I'll get back to you within 24 hours.
+        </div>
+
+        <!-- Two-column layout: info left, form right -->
+        <div style="
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 40px;
+            align-items: start;
+            max-width: 900px;
+            margin: 0 auto;
+        ">
+
+            <!-- Left: Contact info cards -->
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+
+                <div style="
+                    background-color: var(--bg-secondary);
+                    border: 1px solid var(--border-color);
+                    border-radius: 12px;
+                    padding: 22px;
+                    box-shadow: var(--card-shadow);
+                ">
+                    <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">📧 Email</p>
+                    <a href="mailto:tousif.rahman.anto@g.bracu.ac.bd" style="font-size: 0.9rem; word-break: break-all;">
+                        tousif.rahman.anto@g.bracu.ac.bd
+                    </a>
+                </div>
+
+                <div style="
+                    background-color: var(--bg-secondary);
+                    border: 1px solid var(--border-color);
+                    border-radius: 12px;
+                    padding: 22px;
+                    box-shadow: var(--card-shadow);
+                ">
+                    <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">🎮 Discord</p>
+                    <a href="https://discord.com/invite/cse391" target="_blank" rel="noopener noreferrer"
+                        style="font-size: 0.9rem;">
+                        CSE 391 Discord Server
+                    </a>
+                </div>
+
+                <div style="
+                    background-color: var(--bg-secondary);
+                    border: 1px solid var(--border-color);
+                    border-radius: 12px;
+                    padding: 22px;
+                    box-shadow: var(--card-shadow);
+                ">
+                    <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">📍 Location</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Dhaka, Bangladesh</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Open to remote opportunities</p>
+                </div>
+
+                <div style="
+                    background-color: var(--bg-secondary);
+                    border: 1px solid var(--border-color);
+                    border-radius: 12px;
+                    padding: 22px;
+                    box-shadow: var(--card-shadow);
+                ">
+                    <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">⏱️ Response Time</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Typically within <strong>24
+                            hours</strong></p>
+                </div>
+
+            </div>
+
+            <!-- Right: Actual working form via FormSubmit.co -->
+            <div class="contact-container" style="margin: 0;">
+                <!--
+                    FormSubmit.co — free, no backend needed.
+                    Replace the email below with your own if needed.
+                    First submission sends a one-time confirmation email to activate.
+                -->
+                <form action="https://formsubmit.co/tousif.rahman.anto@g.bracu.ac.bd" method="POST" id="contact-form">
+                    <!-- FormSubmit configuration hidden fields -->
+                    <!-- Custom subject line in the received email -->
+                    <input type="hidden" name="_subject" value="New Portfolio Contact: CSE 391">
+                    <!-- Redirect back to this page after submission -->
+                    <input type="hidden" name="_next" value="index.html?sent=1">
+                    <!-- Disable FormSubmit's built-in captcha (the form has validation) -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Honeypot anti-spam trap — bots fill it, humans don't see it -->
+                    <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+
+                    <div class="form-group">
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name" name="name" class="form-control"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" name="email" class="form-control"
+                            placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" name="subject" class="form-control"
+                            placeholder="What's this about?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" class="form-control"
+                            placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; font-size: 1rem; padding: 14px;">
+                            ✉️ Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <p>&copy; 2026 Tousif Rahman Anto. All rights reserved.</p>
+                <p>Designed for CSE 391: Programming for the Internet.</p>
+            </div>
+            <!-- JavaScript metadata targets -->
+            <div class="js-info">
+                <p><strong>Path:</strong> <span id="page-location" class="text-italic"
+                        style="font-size: 0.8rem; word-break: break-all;">Loading...</span></p>
+                <p><strong>Last Modified:</strong> <span id="last-modified" class="text-highlight">Loading...</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JS Connection -->
+    <script src="script.js"></script>
+</body>
+
+</html>

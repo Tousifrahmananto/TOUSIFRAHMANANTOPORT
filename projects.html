@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects &amp; Experience | Tousif Rahman Anto</title>
+    <!-- External CSS Connection -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS (Sparingly used for minor styles) -->
+    <style>
+        .projects-header {
+            text-align: center;
+            padding: 60px 0 20px;
+        }
+
+        .projects-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="fade-in">
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Tousif Rahman Anto</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#lists">Interests</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="projects.html" class="text-highlight">Projects</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
+                    <!-- Theme Toggle -->
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">🌙</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container" style="padding-bottom: 80px;">
+        <div class="projects-header">
+            <h1>Technical Projects &amp; Experience</h1>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                A comprehensive log of my engineering and developer experience, including core full-stack platforms, AI
+                tools, academic research, and professional growth through teaching and leadership roles.
+            </p>
+        </div>
+
+        <!-- Work Experience Timeline Section -->
+        <section style="margin-top: 50px; margin-bottom: 60px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: var(--primary-color);">Professional Work
+                Experience</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">My journey across full-stack development,
+                operations, and leadership roles:</p>
+            <div class="experience-container">
+                <div class="experience-item">
+                    <div class="exp-date">2024 – Present</div>
+                    <div class="exp-marker"></div>
+                    <div class="exp-content">
+                        <div class="exp-title">Lead Full-Stack Developer</div>
+                        <div class="exp-role">AFK Productions</div>
+                        <div class="exp-description">
+                            Built and deployed an esports tournament management platform using MERN stack (MongoDB,
+                            Express, React, Node.js) and TailwindCSS. Engineered an automated bracket system supporting
+                            3 tournament formats (Single Elimination, Double Elimination, Round Robin) using a 3x
+                            Fisher-Yates shuffle and power-of-two slot balancing. Designed secure REST APIs with JWT
+                            (httpOnly) authentication and RBAC for 4 user roles. Added validation and unit tests for
+                            critical flows.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-date">2025 – Present</div>
+                    <div class="exp-marker"></div>
+                    <div class="exp-content">
+                        <div class="exp-title">Full-Stack AI Application Developer</div>
+                        <div class="exp-role">CodeSwitch (GitHub) | Vercel / Railway</div>
+                        <div class="exp-description">
+                            Built a dual-engine code conversion application with 2 conversion paths: LLM-based
+                            transformation (Groq/OpenAI/Gemini) and rule-based regex fallback. Implemented API provider
+                            failover and key-rotation logic across 3 LLM providers. Developed Python/Django REST
+                            Framework backend with httpOnly JWT authentication, brute-force lockout controls, and CSP
+                            middleware. Delivered React 18 + TypeScript frontend with route-level code splitting and
+                            lazy-loaded Monaco Editor.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-date">2024 – 2025</div>
+                    <div class="exp-marker"></div>
+                    <div class="exp-content">
+                        <div class="exp-title">Coding Instructor &amp; Curriculum Developer</div>
+                        <div class="exp-role">Dreamers Academy</div>
+                        <div class="exp-description">
+                            Taught beginner-friendly Python syntax, control flow, functions, and practical
+                            problem-solving to children. Designed structured, milestone-based curricula to help new
+                            learners transition into software development fundamentals. Built custom Lua curriculum for
+                            Roblox Studio game development.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-date">2024 – Present</div>
+                    <div class="exp-marker"></div>
+                    <div class="exp-content">
+                        <div class="exp-title">Head of Human Resource Management</div>
+                        <div class="exp-role">AFK Productions</div>
+                        <div class="exp-description">
+                            Managed a crew of 25+ members and coordinated logistics, scheduling, and communication for
+                            esports events. Oversaw recruitment, onboarding, and team coordination across multiple
+                            tournament operations and productions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-date">2024 – Present</div>
+                    <div class="exp-marker"></div>
+                    <div class="exp-content">
+                        <div class="exp-title">Management / Discord Moderator</div>
+                        <div class="exp-role">MercenarieZ (Freelance)</div>
+                        <div class="exp-description">
+                            Managed Discord moderation and community operations, including scheduling, announcements,
+                            and event logistics. Coordinated tasks with staff and tournament teams while maintaining
+                            issue trackers and escalation notes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching Section -->
+        <section style="margin-bottom: 60px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: var(--primary-color);">Teaching &amp; Mentorship
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Committed to sharing knowledge and nurturing
+                the next generation of developers through hands-on education.</p>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                <div class="teaching-card">
+                    <div class="teaching-header">
+                        <span class="teaching-icon">👨‍🏫</span>
+                        <div class="teaching-title">Python Instructor</div>
+                    </div>
+                    <div class="teaching-meta">Dreamers Academy | Part-time | 2024 – 2025</div>
+                    <p class="teaching-description">
+                        Taught beginner-friendly Python syntax, control flow, functions, and practical problem-solving
+                        strategies to children ages 8-16.
+                    </p>
+                    <ul class="teaching-highlights">
+                        <li>Designed interactive lessons with real-world problem scenarios</li>
+                        <li>Provided individualized feedback and progress tracking</li>
+                        <li>Created positive, inclusive learning environment</li>
+                    </ul>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-header">
+                        <span class="teaching-icon">🎮</span>
+                        <div class="teaching-title">Lua &amp; Roblox Curriculum</div>
+                    </div>
+                    <div class="teaching-meta">Dreamers Academy | Part-time | 2024 – 2025</div>
+                    <p class="teaching-description">
+                        Built custom Lua curriculum for Roblox Studio game development, introducing students to game
+                        programming fundamentals through hands-on projects.
+                    </p>
+                    <ul class="teaching-highlights">
+                        <li>Structured game development learning path</li>
+                        <li>Integrated Roblox API fundamentals</li>
+                        <li>Focused on creative problem-solving through games</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Structured Table with row and column merges -->
+        <h2 style="font-size: 1.5rem; margin-top: 50px; margin-bottom: 20px; color: var(--primary-color);">Project
+            Portfolio Summary</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <!-- Headers demonstrating row & column merging -->
+                    <tr>
+                        <th rowspan="2">Domain</th>
+                        <th rowspan="2">Project Name</th>
+                        <th colspan="2" style="text-align: center;">Technical Showcase</th>
+                        <th rowspan="2">Period</th>
+                    </tr>
+                    <tr>
+                        <th>Technologies</th>
+                        <th>Detailed Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Category spans over 2 rows (rowspan) -->
+                        <td rowspan="2" style="font-weight: 600; color: var(--primary-color);">Web &amp; Full-Stack
+                            Development</td>
+                        <td style="font-weight: 500;">
+                            AFK Productions <br>
+                            <span class="text-italic" style="font-size: 0.85rem; color: var(--text-secondary);">Lead
+                                Full-Stack Developer</span>
+                        </td>
+                        <td>
+                            <span class="tag tag-tech">MERN Stack</span>
+                            <span class="tag tag-tech">Socket.IO</span>
+                            <span class="tag tag-tech">TailwindCSS</span>
+                        </td>
+                        <td class="table-desc">
+                            Built and deployed an esports tournament management platform. Engineered an automated
+                            bracket system supporting Single/Double Elimination and Round Robin formats using a 3x
+                            Fisher-Yates shuffle algorithm. Implemented real-time updates and secure JWT authentication.
+                        </td>
+                        <td>2024 &ndash; Present</td>
+                    </tr>
+                    <tr>
+                        <!-- Domain cell omitted due to rowspan in row above -->
+                        <td style="font-weight: 500;">
+                            CodeSwitch <br>
+                            <span class="text-italic"
+                                style="font-size: 0.85rem; color: var(--text-secondary);">Full-Stack AI Developer</span>
+                        </td>
+                        <td>
+                            <span class="tag tag-tech">React.js</span>
+                            <span class="tag tag-tech">Django</span>
+                            <span class="tag tag-tech">LLM APIs</span>
+                            <span class="tag tag-tech">Monaco Editor</span>
+                        </td>
+                        <td class="table-desc">
+                            Created a dual-engine code conversion application. Features an LLM-based translation path
+                            (using Groq, OpenAI, and Gemini) and a rule-based regex fallback. Implemented API provider
+                            failover and lazy-loaded Monaco Editor components for fast page load times.
+                        </td>
+                        <td>2025 &ndash; Present</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600; color: var(--primary-color);">AI &amp; NLP Research</td>
+                        <td style="font-weight: 500;">
+                            Self-Evolving Conversational AI <br>
+                            <span class="text-italic" style="font-size: 0.85rem; color: var(--text-secondary);">Lead
+                                Developer &amp; Researcher</span>
+                        </td>
+                        <td>
+                            <span class="tag tag-accent">Python</span>
+                            <span class="tag tag-accent">Generative NLP</span>
+                            <span class="tag tag-accent">Psychological Modeling</span>
+                        </td>
+                        <td class="table-desc">
+                            Leading an active thesis project titled <span class="text-italic">"Toward a Self-Evolving
+                                Conversational AI: Integrating Generative NLP with Psychological Modeling."</span>
+                            Investigates context-window optimization, chatbot adaptation, and quality evaluations.
+                        </td>
+                        <!-- Merge the Period columns for similar 2025-present projects if needed, or keep it standard -->
+                        <td>2025 &ndash; Present</td>
+                    </tr>
+                    <tr>
+                        <!-- Colspan merging to show leadership and external roles across columns -->
+                        <td style="font-weight: 600; color: var(--primary-color);">Leadership &amp; Education</td>
+                        <td style="font-weight: 500;">Dreamers Academy &amp; MCN</td>
+                        <td>
+                            <span class="tag tag-tech">Python / Lua</span>
+                            <span class="tag tag-accent">Curriculum Dev</span>
+                        </td>
+                        <td colspan="2" class="table-desc">
+                            <strong>Dreamers Academy (Coding Instructor):</strong> Taught Python and Lua curriculum to
+                            children. <br>
+                            <strong>Millennium Fellowship (GAC Member &amp; Fellow):</strong> Evaluated global project
+                            submissions using data-driven scoring matrices for social impact projects.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Project Detail Cards -->
+        <h2 style="font-size: 1.5rem; margin-top: 50px; margin-bottom: 20px; color: var(--primary-color);">Featured
+            Project Highlights</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3 class="card-title">🏆 AFK Productions Esports Platform</h3>
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                    An esports tournament hub designed to host brackets and manage user profiles in Bangladesh. It
+                    handles 25+ crew members and scales tournament operations seamlessly.
+                </p>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <strong>Highlights:</strong> Automated bracket generation, real-time Socket.IO updates, JWT
+                    security, RBAC roles, TailwindCSS responsive design, unit tested authentication flows.
+                </p>
+                <div style="font-size: 0.85rem; border-top: 1px solid var(--border-color); padding-top: 15px;">
+                    <strong>Tech Stack:</strong>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-tech">MongoDB</span>
+                        <span class="tag tag-tech">Express</span>
+                        <span class="tag tag-tech">React</span>
+                        <span class="tag tag-tech">Node.js</span>
+                        <span class="tag tag-tech">Socket.IO</span>
+                        <span class="tag tag-tech">TailwindCSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">🔄 CodeSwitch Code Conversion Utility</h3>
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                    A tool designed to translate code snippets from one programming language to another. It utilizes API
+                    failover architectures to guarantee 100% service uptime under rate limits.
+                </p>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <strong>Highlights:</strong> Dual conversion engines, LLM failover logic, lazy-loaded Monaco Editor,
+                    brute-force protection, httpOnly JWT tokens, CSP middleware, route-level code splitting.
+                </p>
+                <div style="font-size: 0.85rem; border-top: 1px solid var(--border-color); padding-top: 15px;">
+                    <strong>Tech Stack:</strong>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-tech">React 18</span>
+                        <span class="tag tag-tech">TypeScript</span>
+                        <span class="tag tag-tech">Django</span>
+                        <span class="tag tag-tech">Monaco Editor</span>
+                        <span class="tag tag-tech">OpenAI API</span>
+                        <span class="tag tag-tech">Groq</span>
+                        <span class="tag tag-tech">Gemini</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">🤖 Self-Evolving Conversational AI Thesis</h3>
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                    A research endeavor focusing on chatbot behaviors. The project bridges generative large language
+                    models with human psychological profiling to mimic natural conversational drift.
+                </p>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <strong>Highlights:</strong> Context-window management, response adaptation, prompt orchestration,
+                    evaluation criteria for response quality and coherence, NLP pipeline experimentation.
+                </p>
+                <div style="font-size: 0.85rem; border-top: 1px solid var(--border-color); padding-top: 15px;">
+                    <strong>Tech Stack:</strong>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                        <span class="tag tag-accent">Python</span>
+                        <span class="tag tag-accent">Generative NLP</span>
+                        <span class="tag tag-accent">Psychological Modeling</span>
+                        <span class="tag tag-accent">LangChain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <p>&copy; 2026 Tousif Rahman Anto. All rights reserved.</p>
+                <p>Designed for CSE 391: Programming for the Internet.</p>
+            </div>
+            <div class="js-info">
+                <p><strong>Path:</strong> <span id="page-location" class="text-italic"
+                        style="font-size: 0.8rem; word-break: break-all;">Loading...</span></p>
+                <p><strong>Last Modified:</strong> <span id="last-modified" class="text-highlight">Loading...</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JS Connection -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1016 @@
+/* 
+   CSE 391: Programming for the Internet
+   Assignment 1: Personal Web Page Stylesheet
+   Author: Tousif Rahman Anto
+   Description: Standard CSS styles, responsive layouts, animations, and dark/light themes.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   THEME VARIABLES
+   ============================================================ */
+:root {
+    --bg-primary:      #f8fafc;
+    --bg-secondary:    #ffffff;
+    --text-primary:    #0f172a;
+    --text-secondary:  #475569;
+    --primary-color:   #4f46e5;
+    --primary-hover:   #4338ca;
+    --accent-color:    #d946ef;
+    --border-color:    #e2e8f0;
+    --card-shadow:     0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --hover-shadow:    0 10px 25px -5px rgb(79 70 229 / 0.15), 0 4px 10px -5px rgb(79 70 229 / 0.1);
+    --table-header-bg: #e2e8f0;
+    --table-row-even:  #f1f5f9;
+    --table-row-hover: #e2e8f0;
+    --speed:           0.35s;
+    --font-main:       'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body.dark-theme {
+    --bg-primary:      #0f172a;
+    --bg-secondary:    #1e293b;
+    --text-primary:    #f8fafc;
+    --text-secondary:  #94a3b8;
+    --primary-color:   #6366f1;
+    --primary-hover:   #818cf8;
+    --accent-color:    #f472b6;
+    --border-color:    #334155;
+    --card-shadow:     0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --hover-shadow:    0 10px 25px -5px rgb(99 102 241 / 0.3), 0 4px 10px -5px rgb(99 102 241 / 0.2);
+    --table-header-bg: #334155;
+    --table-row-even:  #1e293b;
+    --table-row-hover: #2d3f55;
+}
+
+/* ============================================================
+   BASE & RESET
+   ============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    transition: background-color var(--speed), color var(--speed);
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--speed);
+}
+a:hover { color: var(--accent-color); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ============================================================
+   ANIMATED GRADIENT HERO BACKGROUND
+   ============================================================ */
+.hero-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    /* Moving mesh gradient */
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(79,70,229,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 70%, rgba(217,70,239,0.10) 0%, transparent 60%),
+        var(--bg-primary);
+    animation: meshShift 12s ease-in-out infinite alternate;
+    transition: background var(--speed);
+}
+
+@keyframes meshShift {
+    0%   { background-position: 0% 0%,   100% 100%; }
+    33%  { background-position: 50% 20%,  60% 80%;  }
+    66%  { background-position: 80% 60%,  20% 40%;  }
+    100% { background-position: 100% 100%, 0% 0%;   }
+}
+
+/* ============================================================
+   HEADER & NAVIGATION
+   ============================================================ */
+header {
+    background-color: rgba(255,255,255,0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+    transition: background-color var(--speed), border-color var(--speed);
+}
+
+body.dark-theme header {
+    background-color: rgba(15,23,42,0.80);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Logo — gradient text with flowing colour animation */
+.logo {
+    font-size: 1.45rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: logoFlow 6s linear infinite;
+    transition: transform var(--speed);
+    letter-spacing: -0.3px;
+}
+
+@keyframes logoFlow {
+    0%   { background-position: 0%   50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.logo:hover { transform: scale(1.04); }
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    align-items: center;
+}
+
+nav ul li a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 7px 13px;
+    border-radius: 7px;
+    color: var(--text-primary);
+    transition: background-color var(--speed), color var(--speed);
+}
+
+nav ul li a:hover {
+    background-color: rgba(79,70,229,0.08);
+    color: var(--primary-color);
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+.theme-toggle-btn {
+    background: none;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--speed), border-color var(--speed), transform var(--speed);
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(79,70,229,0.08);
+    border-color: var(--primary-color);
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-section {
+    padding: 100px 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    min-height: 520px;
+}
+
+.hero-content { flex: 1; }
+
+.hero-subtitle {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 14px;
+    /* Slide in from left on page load */
+    animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    animation: slideInLeft 0.7s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Typing cursor effect on the name span */
+.hero-name {
+    position: relative;
+    display: inline-block;
+}
+.hero-name::after {
+    content: '|';
+    color: var(--accent-color);
+    animation: blink 1.1s step-end infinite;
+    margin-left: 2px;
+    font-weight: 300;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 520px;
+    line-height: 1.8;
+    animation: slideInLeft 0.7s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    animation: slideInLeft 0.7s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   PROFILE IMAGE — float + hover pause (no conflict)
+   ============================================================ */
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg-secondary);
+    box-shadow: 0 0 0 6px rgba(79,70,229,0.15);
+    /* Only transition non-transform properties; transform is owned by float */
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    animation: float 4s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.profile-img:hover {
+    /* Freeze the float, apply the rotate scale cleanly */
+    animation-play-state: paused;
+    transform: rotate(4deg) scale(1.06);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 8px rgba(217,70,239,0.20);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px);    }
+    50%       { transform: translateY(-14px);  }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 26px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    transition: transform var(--speed) ease, box-shadow var(--speed) ease,
+                background-color var(--speed) ease;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple layer */
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.btn:hover::after { opacity: 1; }
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(79,70,229,0.45);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary) !important;
+}
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+section {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 18px;
+    /* No animation here — JS IntersectionObserver handles it */
+}
+
+/* Gradient underline */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    /* Width expands in when .reveal class is added by JS */
+    transition: width 0.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   SCROLL REVEAL — JS adds .revealed to trigger these
+   ============================================================ */
+
+/* Default hidden state for reveal targets */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger helper — JS sets --stagger-i as a CSS var */
+.reveal-stagger {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--stagger-i, 0) * 90ms);
+}
+.reveal-stagger.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section title underline: starts at 0, expands when revealed */
+.section-title.revealed::after { width: 52px; }
+.section-title:not(.revealed)::after { width: 0; }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+    /* Only transition specific properties — no 'all', avoids animation clashes */
+    transition: transform var(--speed) ease,
+                box-shadow var(--speed) ease,
+                border-color var(--speed) ease;
+    will-change: transform;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--hover-shadow);
+    border-color: rgba(79,70,229,0.35);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--primary-color);
+}
+
+/* ============================================================
+   QUOTE BOX
+   ============================================================ */
+.quote-box {
+    background-color: var(--bg-secondary);
+    border-left: 5px solid var(--accent-color);
+    padding: 28px 32px;
+    border-radius: 0 14px 14px 0;
+    font-style: italic;
+    font-size: 1.15rem;
+    margin: 36px auto;
+    max-width: 780px;
+    box-shadow: var(--card-shadow);
+    color: var(--text-secondary);
+    transition: border-color var(--speed), box-shadow var(--speed);
+}
+.quote-box:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--hover-shadow);
+}
+
+.quote-author {
+    display: block;
+    margin-top: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+.custom-list {
+    list-style: none;
+    max-width: 580px;
+    margin: 28px auto;
+}
+
+.custom-list li {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--card-shadow);
+    /* Only transition what we need */
+    transition: transform var(--speed), border-color var(--speed), box-shadow var(--speed);
+}
+.custom-list li:hover {
+    transform: translateX(6px);
+    border-color: var(--accent-color);
+    box-shadow: var(--hover-shadow);
+}
+
+.custom-list li span.rank {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    margin-top: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 680px;
+}
+
+th, td {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) td { background-color: var(--table-row-even); }
+tr:hover td {
+    background-color: var(--table-row-hover);
+    transition: background-color var(--speed);
+}
+
+.table-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    border-radius: 20px;
+    font-weight: 500;
+    margin: 2px;
+}
+.tag-tech    { background-color: rgba(79,70,229,0.10); color: var(--primary-color); }
+.tag-accent  { background-color: rgba(217,70,239,0.10); color: var(--accent-color); }
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-container {
+    max-width: 580px;
+    margin: 36px auto 0;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+}
+
+.form-group { margin-bottom: 22px; }
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 9px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: border-color var(--speed), box-shadow var(--speed);
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.88rem;
+    transition: background-color var(--speed);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.js-info { text-align: right; }
+.js-info p { margin-bottom: 5px; }
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.skill-category-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 26px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+}
+.skill-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity var(--speed);
+}
+.skill-category-card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); border-color: rgba(79,70,229,0.3); }
+.skill-category-card:hover::before { opacity: 1; }
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    list-style: none;
+}
+
+.skills-list li {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    /* Only transition specific props — avoids transform clash */
+    transition: background-color var(--speed), color var(--speed),
+                border-color var(--speed), transform var(--speed);
+}
+.skills-list li:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    transform: scale(1.06);
+}
+
+/* ============================================================
+   HOBBIES GRID
+   ============================================================ */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 28px;
+}
+
+.hobby-card {
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: transform var(--speed) ease, box-shadow var(--speed) ease;
+}
+.hobby-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--hover-shadow);
+}
+
+.hobby-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.hobby-card:hover .hobby-img { transform: scale(1.04); }
+
+.hobby-body { padding: 22px; }
+
+/* ============================================================
+   EXPERIENCE TIMELINE  — 3-column grid: date | track | card
+   ============================================================ */
+.experience-container {
+    max-width: 820px;
+    margin: 0 auto;
+    /* Clip hover shadow bleed, not the translateX glitch */
+    overflow: visible;
+}
+
+.experience-item {
+    display: grid;
+    /* Col 1: date label  |  Col 2: dot + line (fixed 36px)  |  Col 3: content card */
+    grid-template-columns: 130px 36px 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    column-gap: 0;
+    row-gap: 0;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+/* ── Date column ── */
+.exp-date {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+    padding-right: 16px;
+    padding-top: 6px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.5;
+    /* Prevent wrapping: dates like "2024 – PRESENT" stay on one or two clean lines */
+    white-space: normal;
+    word-break: keep-all;
+}
+
+/* ── Dot track column ── */
+.exp-marker {
+    grid-column: 2;
+    grid-row: 1;
+    /* Override old absolute positioning — now a real grid item */
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid var(--bg-secondary);
+    box-shadow: 0 0 0 4px rgba(79,70,229,0.15);
+    margin-top: 5px;
+    justify-self: center;
+    z-index: 1;
+    transition: background var(--speed), box-shadow var(--speed), transform var(--speed);
+}
+
+/* Vertical line — drawn as ::after on the marker so it naturally sits in col 2 */
+.exp-marker::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    /* Extends through the gap + next item's margin */
+    height: calc(100% + 32px + 24px);
+    background: linear-gradient(180deg, var(--primary-color), rgba(217,70,239,0.3));
+    opacity: 0.3;
+}
+.experience-item:last-child .exp-marker::after { display: none; }
+
+.experience-item:hover .exp-marker {
+    background: var(--accent-color);
+    box-shadow: 0 0 0 5px rgba(217,70,239,0.2), 0 0 14px rgba(217,70,239,0.35);
+    transform: scale(1.3);
+}
+
+/* ── Content card column ── */
+.exp-content {
+    grid-column: 3;
+    grid-row: 1;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-left: 12px;
+    min-width: 0; /* prevent grid blowout */
+    transition: border-color var(--speed), box-shadow var(--speed);
+}
+.experience-item:hover .exp-content {
+    border-color: rgba(99,102,241,0.4);
+    box-shadow: 0 6px 24px rgba(79,70,229,0.10);
+    /* No translateX — it causes horizontal overflow */
+}
+
+.exp-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+.exp-role {
+    font-size: 0.88rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.exp-description {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   ACHIEVEMENT BADGES
+   ============================================================ */
+.achievement-badge {
+    background: linear-gradient(135deg, rgba(79,70,229,0.06), rgba(217,70,239,0.06));
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 26px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed);
+}
+
+/* Shimmer sweep on hover */
+.achievement-badge::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    transition: left 0.55s ease;
+}
+.achievement-badge:hover::before { left: 100%; }
+.achievement-badge:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
+}
+
+.badge-icon     { font-size: 2.4rem; margin-bottom: 11px; }
+.badge-title    { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+.badge-subtitle { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 9px; }
+.badge-description { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* ============================================================
+   TEACHING CARDS
+   ============================================================ */
+.teaching-card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(79,70,229,0.04) 100%);
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--speed) ease, border-color var(--speed), box-shadow var(--speed);
+}
+.teaching-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 14px 14px 0 0;
+}
+.teaching-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: var(--hover-shadow);
+}
+
+.teaching-header  { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.teaching-icon    { font-size: 1.7rem; }
+.teaching-title   { font-size: 1.2rem; font-weight: 600; }
+.teaching-meta    { font-size: 0.87rem; color: var(--text-secondary); margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid var(--border-color); }
+.teaching-description { color: var(--text-secondary); line-height: 1.65; margin-bottom: 13px; font-size: 0.93rem; }
+.teaching-highlights { list-style: none; }
+.teaching-highlights li {
+    color: var(--text-secondary);
+    margin-bottom: 7px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.92rem;
+}
+.teaching-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* ============================================================
+   TEXT UTILITIES
+   ============================================================ */
+.text-highlight {
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.text-italic { font-style: italic; }
+
+/* ============================================================
+   HERO ENTRY ANIMATIONS (CSS only, no JS needed)
+   ============================================================ */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0);    }
+}
+
+/* Gradient text shift for logo */
+@keyframes logoFlow {
+    0%   { background-position: 0%   50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 50px 0 40px;
+    }
+    .hero-buttons     { justify-content: center; }
+    .hero-description { max-width: 100%; }
+    .profile-img      { width: 220px; height: 220px; }
+    .footer-content   { flex-direction: column; text-align: center; }
+    .js-info          { text-align: center; }
+    .nav-container    { flex-direction: column; gap: 12px; }
+    .hero-title       { font-size: 2.2rem; }
+    .section-title    { font-size: 1.6rem; }
+    nav ul            { flex-wrap: wrap; gap: 6px; }
+    .card-grid, .skills-container { grid-template-columns: 1fr; }
+
+    /* Contact: stack to single column */
+    #contact > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Timeline: collapse to single column on mobile */
+    .experience-item {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding-left: 28px;  /* space for the dot on the left */
+        border-left: 2px solid rgba(79,70,229,0.2);
+        margin-left: 8px;
+    }
+    .exp-date {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 6px;
+    }
+    .exp-marker {
+        grid-column: 1;
+        grid-row: 1;
+        position: absolute;
+        left: -10px;
+        top: 4px;
+        justify-self: unset;
+        margin-top: 0;
+    }
+    .exp-marker::after { display: none; }
+    .exp-content {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title    { font-size: 1.7rem; }
+    .hero-subtitle { font-size: 0.8rem; }
+    .section-title { font-size: 1.3rem; }
+    nav ul li a    { padding: 6px 10px; font-size: 0.88rem; }
+    .card          { padding: 20px; }
+    .contact-container { padding: 24px; }
+}
