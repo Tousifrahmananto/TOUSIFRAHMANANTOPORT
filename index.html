@@ -398,26 +398,29 @@
             Have a project idea, course question, or want to collaborate?
             Reach out directly through the form or connect via
             <a href="https://discord.com/invite/cse391" target="_blank" rel="noopener noreferrer">CSE 391 Discord</a>.
-            You can also visit <a href="https://www.bracu.ac.bd" target="_blank" rel="noopener noreferrer">BRAC
-                University</a>.
+            You can also visit <a href="https://www.bracu.ac.bd" target="_blank" rel="noopener noreferrer">BRAC University</a>.
         </p>
 
-        <!-- Success banner shown after form submission -->
+        <!-- Success / Error banners -->
         <div id="form-success" style="
             display: none;
             background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(217,70,239,0.1));
             border: 1px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 20px 28px;
-            text-align: center;
-            max-width: 580px;
+            border-radius: 12px; padding: 20px 28px;
+            text-align: center; max-width: 580px;
             margin: 0 auto 32px;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1rem;
-        ">
-            ✅ Message sent! I'll get back to you within 24 hours.
-        </div>
+            color: var(--text-primary); font-weight: 600; font-size: 1rem;
+        ">✅ Message sent! I'll get back to you within 24 hours.</div>
+
+        <div id="form-error" style="
+            display: none;
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.4);
+            border-radius: 12px; padding: 20px 28px;
+            text-align: center; max-width: 580px;
+            margin: 0 auto 32px;
+            color: #dc2626; font-weight: 600; font-size: 1rem;
+        ">❌ Something went wrong. Please email me directly at tousif.rahman.anto@g.bracu.ac.bd</div>
 
         <!-- Two-column layout: info left, form right -->
         <div style="
@@ -432,105 +435,78 @@
             <!-- Left: Contact info cards -->
             <div style="display: flex; flex-direction: column; gap: 18px;">
 
-                <div style="
-                    background-color: var(--bg-secondary);
-                    border: 1px solid var(--border-color);
-                    border-radius: 12px;
-                    padding: 22px;
-                    box-shadow: var(--card-shadow);
-                ">
+                <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; box-shadow: var(--card-shadow);">
                     <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">📧 Email</p>
-                    <a href="mailto:tousif.rahman.anto@g.bracu.ac.bd" style="font-size: 0.9rem; word-break: break-all;">
-                        tousif.rahman.anto@g.bracu.ac.bd
-                    </a>
+                    <a href="mailto:tousif.rahman.anto@g.bracu.ac.bd" style="font-size: 0.9rem; word-break: break-all;">tousif.rahman.anto@g.bracu.ac.bd</a>
                 </div>
 
-                <div style="
-                    background-color: var(--bg-secondary);
-                    border: 1px solid var(--border-color);
-                    border-radius: 12px;
-                    padding: 22px;
-                    box-shadow: var(--card-shadow);
-                ">
+                <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; box-shadow: var(--card-shadow);">
                     <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">🎮 Discord</p>
-                    <a href="https://discord.com/invite/cse391" target="_blank" rel="noopener noreferrer"
-                        style="font-size: 0.9rem;">
-                        CSE 391 Discord Server
-                    </a>
+                    <a href="https://discord.com/invite/cse391" target="_blank" rel="noopener noreferrer" style="font-size: 0.9rem;">CSE 391 Discord Server</a>
                 </div>
 
-                <div style="
-                    background-color: var(--bg-secondary);
-                    border: 1px solid var(--border-color);
-                    border-radius: 12px;
-                    padding: 22px;
-                    box-shadow: var(--card-shadow);
-                ">
+                <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; box-shadow: var(--card-shadow);">
                     <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">📍 Location</p>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Dhaka, Bangladesh</p>
                     <p style="font-size: 0.9rem; color: var(--text-secondary);">Open to remote opportunities</p>
                 </div>
 
-                <div style="
-                    background-color: var(--bg-secondary);
-                    border: 1px solid var(--border-color);
-                    border-radius: 12px;
-                    padding: 22px;
-                    box-shadow: var(--card-shadow);
-                ">
+                <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 22px; box-shadow: var(--card-shadow);">
                     <p style="font-weight: 700; margin-bottom: 6px; color: var(--primary-color);">⏱️ Response Time</p>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Typically within <strong>24
-                            hours</strong></p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Typically within <strong>24 hours</strong></p>
                 </div>
 
             </div>
 
-            <!-- Right: Actual working form via FormSubmit.co -->
+            <!-- Right: FormSubmit.co form — works on Vercel (HTTPS) -->
             <div class="contact-container" style="margin: 0;">
                 <!--
                     FormSubmit.co — free, no backend needed.
-                    Replace the email below with your own if needed.
-                    First submission sends a one-time confirmation email to activate.
+                    First submission triggers a one-time activation email — click confirm,
+                    then all future submissions land directly in your inbox.
                 -->
-                <form action="https://formsubmit.co/tousif.rahman.anto@g.bracu.ac.bd" method="POST" id="contact-form">
-                    <!-- FormSubmit configuration hidden fields -->
-                    <!-- Custom subject line in the received email -->
+                <form
+                    action="https://formsubmit.co/tousif.rahman.anto@g.bracu.ac.bd"
+                    method="POST"
+                    id="contact-form"
+                >
+                    <!-- Email subject line -->
                     <input type="hidden" name="_subject" value="New Portfolio Contact: CSE 391">
-                    <!-- Redirect back to this page after submission -->
-                    <input type="hidden" name="_next" value="index.html?sent=1">
-                    <!-- Disable FormSubmit's built-in captcha (the form has validation) -->
+                    <!-- Redirect back here with ?sent=1 so JS shows the success banner -->
+                    <input type="hidden" name="_next" value="?sent=1">
+                    <!-- Skip FormSubmit captcha (HTML5 validation handles it) -->
                     <input type="hidden" name="_captcha" value="false">
-                    <!-- Honeypot anti-spam trap — bots fill it, humans don't see it -->
-                    <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off">
+                    <!-- Honeypot — bots fill it, humans can't see it -->
+                    <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
 
                     <div class="form-group">
                         <label for="contact-name">Your Name</label>
-                        <input type="text" id="contact-name" name="name" class="form-control"
-                            placeholder="Enter your full name" required>
+                        <input type="text" id="contact-name" name="name"
+                            class="form-control" placeholder="Enter your full name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="contact-email">Email Address</label>
-                        <input type="email" id="contact-email" name="email" class="form-control"
-                            placeholder="your@email.com" required>
+                        <input type="email" id="contact-email" name="email"
+                            class="form-control" placeholder="your@email.com" required>
                     </div>
 
                     <div class="form-group">
                         <label for="contact-subject">Subject</label>
-                        <input type="text" id="contact-subject" name="subject" class="form-control"
-                            placeholder="What's this about?" required>
+                        <input type="text" id="contact-subject" name="subject"
+                            class="form-control" placeholder="What's this about?" required>
                     </div>
 
                     <div class="form-group">
                         <label for="contact-message">Message</label>
-                        <textarea id="contact-message" name="message" rows="5" class="form-control"
-                            placeholder="Write your message here..." required></textarea>
+                        <textarea id="contact-message" name="message" rows="5"
+                            class="form-control" placeholder="Write your message here..." required></textarea>
                     </div>
 
                     <div class="form-group" style="margin-bottom: 0;">
-                        <button type="submit" class="btn btn-primary"
+                        <button type="submit" id="submit-btn" class="btn btn-primary"
                             style="width: 100%; justify-content: center; font-size: 1rem; padding: 14px;">
-                            ✉️ Send Message
+                            &#9993;&#65039; Send Message
                         </button>
                     </div>
                 </form>
