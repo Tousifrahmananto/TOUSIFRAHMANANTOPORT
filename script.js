@@ -1,21 +1,6 @@
-/*
-   CSE 391: Programming for the Internet
-   Assignment 1: Personal Web Page JavaScript
-   Author: Tousif Rahman Anto
-
-   Responsibilities:
-   1. Dark / Light theme toggle (localStorage-persisted)
-   2. Footer: live page URL + last-modified date
-   3. Scroll-reveal: IntersectionObserver drives .reveal & .reveal-stagger classes
-      — NO inline style overrides that would fight CSS animations
-   4. Smooth scroll for anchor links (offset for sticky header)
-*/
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ─────────────────────────────────────────────────
-       1. THEME TOGGLE
-    ───────────────────────────────────────────────── */
     const themeBtn = document.getElementById('theme-toggle');
     const body     = document.body;
 
@@ -38,19 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ─────────────────────────────────────────────────
-       2. FOOTER METADATA
-    ───────────────────────────────────────────────── */
     const locEl = document.getElementById('page-location');
     const modEl = document.getElementById('last-modified');
     if (locEl) locEl.textContent = window.location.href;
     if (modEl) modEl.textContent = document.lastModified;
 
-    /* ─────────────────────────────────────────────────
-       2b. CONTACT FORM SUCCESS BANNER
-       FormSubmit redirects back with ?sent=1 in the URL.
-       We detect that and show the success message.
-    ───────────────────────────────────────────────── */
     const params = new URLSearchParams(window.location.search);
     if (params.get('sent') === '1') {
         const banner = document.getElementById('form-success');
@@ -66,12 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ─────────────────────────────────────────────────
-       2c. WEB3FORMS REDIRECT FIX
-       Set redirect URL to the full absolute URL before submit so
-       Web3Forms redirects back to THIS page, not its own site.
-       Works on any Vercel domain automatically.
-    ───────────────────────────────────────────────── */
     const contactForm = document.getElementById('contact-form');
     const nextUrlInput = document.getElementById('form-next-url');
     if (contactForm && nextUrlInput) {
@@ -88,13 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 + '?sent=1';
         });
     }
-
-    /* ─────────────────────────────────────────────────
-       3. SCROLL REVEAL — IntersectionObserver
-       CSS owns all opacity / transform values.
-       JS only adds / removes the class ".revealed".
-       This keeps CSS animations and JS reveals 100% conflict-free.
-    ───────────────────────────────────────────────── */
 
     // -- 3a. Single-element reveals (.reveal) --
     const revealObserver = new IntersectionObserver(
@@ -144,9 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         staggerObserver.observe(grid);
     });
 
-    /* ─────────────────────────────────────────────────
-       4. SMOOTH ANCHOR SCROLL (with header offset)
-    ───────────────────────────────────────────────── */
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
         link.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -160,9 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ─────────────────────────────────────────────────
-       5. ACTIVE NAV LINK HIGHLIGHT on scroll
-    ───────────────────────────────────────────────── */
     const sections   = document.querySelectorAll('section[id]');
     const navLinks   = document.querySelectorAll('nav a[href^="#"]');
     const headerH    = document.querySelector('header')?.offsetHeight ?? 80;
@@ -187,9 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     sections.forEach((s) => activeObserver.observe(s));
-    /* ─────────────────────────────────────────────────
-       6. PAGE LOCATION & LAST MODIFIED
-    ───────────────────────────────────────────────── */
+
     const pageLocEl = document.getElementById('page-location');
     const lastModEl = document.getElementById('last-modified');
 

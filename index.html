@@ -8,9 +8,9 @@
         content="Personal homepage of Tousif Rahman Anto, a CSE student at BRAC University specializing in full-stack development, AI integration and esports technology.">
     <meta name="author" content="Tousif Rahman Anto">
     <title>Tousif Rahman Anto | Personal Web Page</title>
-    <!-- External CSS Connection -->
+
     <link rel="stylesheet" href="styles.css">
-    <!-- Internal CSS (Sparingly used for minor design adjustments to satisfy assignment requirement) -->
+
     <style>
         .custom-welcome-text {
             font-size: 1.25rem;
@@ -30,25 +30,23 @@
 
 <body>
 
-    <!-- Moving mesh gradient background (fixed, behind all content) -->
     <div class="hero-bg" aria-hidden="true"></div>
 
-    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="/" class="logo">Tousif Rahman Anto</a>
             <nav>
                 <ul>
-                    <!-- Anchor links for jumping to sections on this page -->
+
                     <li><a href="#about">About</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#lists">Interests</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- Internal links to other pages (clean URLs, no .html) -->
+
                     <li><a href="/projects">Projects</a></li>
                     <li><a href="/hobbies">Hobbies</a></li>
-                    <!-- Theme Toggle Switch -->
+
                     <li>
                         <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">🌙</button>
                     </li>
@@ -57,7 +55,6 @@
         </div>
     </header>
 
-    <!-- Hero / About Section -->
     <section id="about" class="hero-section container">
         <div class="hero-content">
             <p class="hero-subtitle">Lead Full-Stack Developer &amp; AI Researcher</p>
@@ -76,16 +73,15 @@
             </div>
         </div>
         <div class="hero-image-container">
-            <!-- Stored Locally (SVG Vector Avatar) -->
+
             <img src="images/IMG_1283.JPG" alt="Tousif Rahman Anto Avatar" class="profile-img">
         </div>
     </section>
 
-    <!-- Education Section -->
     <section id="education" class="container">
         <h2 class="section-title">Education</h2>
         <div class="card-grid">
-            <div class="card" style="grid-column: span 2;"> <!-- Inline CSS used sparingly for layout tweak -->
+            <div class="card" style="grid-column: span 2;"> 
                 <div
                     style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 10px;">
                     <div>
@@ -96,7 +92,6 @@
                     <span class="tag tag-tech" style="font-size: 0.9rem; padding: 6px 12px;">2022 &ndash; Present</span>
                 </div>
 
-                <!-- BRACU Logo (stored locally) -->
                 <div class="bracu-logo-bg"
                     style="display: flex; justify-content: center; align-items: center; margin: 18px 0; padding: 20px; border-radius: 10px; border: 1px solid var(--border-color);">
                     <img src="images/bracu_logo_12-0-2022.png" alt="BRAC University Logo"
@@ -123,7 +118,6 @@
         </div>
     </section>
 
-    <!-- Technical Skills Section -->
     <section id="skills" class="container">
         <h2 class="section-title">Technical Skills</h2>
         <p
@@ -183,7 +177,6 @@
         </div>
     </section>
 
-    <!-- Teaching & Education Section -->
     <section class="container" style="padding: 80px 0;">
         <h2 class="section-title">Teaching & Mentorship</h2>
         <p
@@ -228,7 +221,6 @@
         </div>
     </section>
 
-    <!-- Work Experience Section -->
     <section class="container" style="padding: 80px 0;">
         <h2 class="section-title">Professional Experience</h2>
         <p
@@ -311,7 +303,6 @@
         </div>
     </section>
 
-    <!-- Leadership & Awards Section -->
     <section class="container" style="padding: 80px 0;">
         <h2 class="section-title">Leadership & Recognition</h2>
         <p
@@ -353,7 +344,6 @@
         </div>
     </section>
 
-    <!-- Quote & Lists Section -->
     <section id="lists" class="container">
         <h2 class="section-title">Favorite Motto &amp; Collections</h2>
 
@@ -367,7 +357,7 @@
         <div style="margin-top: 50px;">
             <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">My Favorite Sci-Fi
                 Books &amp; Movies</h3>
-            <!-- Ordered list requirement -->
+
             <ol class="custom-list">
                 <li>
                     <span><span class="rank">1.</span> Dune (Novel by Frank Herbert)</span>
@@ -393,7 +383,6 @@
         </div>
     </section>
 
-    <!-- Contact Form (Bonus Challenge #1) -->
     <section id="contact" class="container">
         <h2 class="section-title">Get In Touch</h2>
         <p style="text-align: center; max-width: 600px; margin: -20px auto 36px; color: var(--text-secondary);">
@@ -404,7 +393,6 @@
                 University</a>.
         </p>
 
-        <!-- Success / Error banners -->
         <div id="form-success" style="
             display: none;
             background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(217,70,239,0.1));
@@ -425,7 +413,6 @@
             color: #dc2626; font-weight: 600; font-size: 1rem;
         ">❌ Something went wrong. Please email me directly at tousif.rahman.anto@g.bracu.ac.bd</div>
 
-        <!-- Two-column layout: info left, form right -->
         <div style="
             display: grid;
             grid-template-columns: 1fr 1.6fr;
@@ -435,7 +422,6 @@
             margin: 0 auto;
         ">
 
-            <!-- Left: Contact info cards -->
             <div style="display: flex; flex-direction: column; gap: 18px;">
 
                 <div
@@ -468,24 +454,16 @@
 
             </div>
 
-            <!-- Right: Web3Forms form — works on Vercel, no monthly reactivation -->
             <div class="contact-container" style="margin: 0;">
-                <!--
-                    Web3Forms — free, no backend needed, no 30-day reactivation.
-                    IMPORTANT: Get your access key from https://web3forms.com/ and paste it below.
-                -->
+
                 <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-                    <!-- Replace YOUR_ACCESS_KEY_HERE with your actual Web3Forms access key -->
+
                     <input type="hidden" name="access_key" value="7a6a0642-e63d-4ae0-be72-a1222cf19c23">
 
-                    <!-- Email subject line -->
                     <input type="hidden" name="subject" value="TOUSIF YOU GOT A MAIL">
-                    <!--
-                        redirect is set dynamically by JS below so it always points back
-                        to YOUR page, on any domain / Vercel URL.
-                    -->
+
                     <input type="hidden" name="redirect" id="form-next-url" value="">
-                    <!-- Honeypot — bots fill it, humans can't see it -->
+
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                     <div class="form-group">
@@ -524,7 +502,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <div>
@@ -539,7 +516,6 @@
         </div>
     </footer>
 
-    <!-- External JS Connection -->
     <script src="script.js"></script>
 </body>
 
