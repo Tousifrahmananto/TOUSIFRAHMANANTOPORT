@@ -11,24 +11,6 @@
    THEME VARIABLES
    ============================================================ */
 :root {
-    --bg-primary:      #f8fafc;
-    --bg-secondary:    #ffffff;
-    --text-primary:    #0f172a;
-    --text-secondary:  #475569;
-    --primary-color:   #4f46e5;
-    --primary-hover:   #4338ca;
-    --accent-color:    #d946ef;
-    --border-color:    #e2e8f0;
-    --card-shadow:     0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --hover-shadow:    0 10px 25px -5px rgb(79 70 229 / 0.15), 0 4px 10px -5px rgb(79 70 229 / 0.1);
-    --table-header-bg: #e2e8f0;
-    --table-row-even:  #f1f5f9;
-    --table-row-hover: #e2e8f0;
-    --speed:           0.35s;
-    --font-main:       'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-body.dark-theme {
     /* Custom Color Palette */
     --ink-black:       #0d1b2a;
     --prussian-blue:   #1b263b;
@@ -36,24 +18,40 @@ body.dark-theme {
     --dusty-denim:     #778da9;
     --alabaster-grey:  #e0e1dd;
 
-    /* Theme Mappings */
-    --bg-primary:      var(--ink-black);
-    --bg-secondary:    var(--prussian-blue);
-    --text-primary:    var(--alabaster-grey);
-    --text-secondary:  var(--dusty-denim);
-    
+    /* Light Theme Mappings using the palette */
+    --bg-primary:      var(--alabaster-grey);
+    --bg-secondary:    #ffffff; /* Clean white for cards against the alabaster background */
+    --text-primary:    var(--ink-black);
+    --text-secondary:  var(--prussian-blue);
     --primary-color:   var(--dusk-blue);
-    --primary-hover:   var(--dusty-denim);
+    --primary-hover:   var(--prussian-blue);
     --accent-color:    var(--dusty-denim);
+    --border-color:    var(--dusty-denim);
     
-    --border-color:    var(--dusk-blue);
+    --card-shadow:     0 4px 6px -1px rgb(13 27 42 / 0.1), 0 2px 4px -2px rgb(13 27 42 / 0.05);
+    --hover-shadow:    0 10px 25px -5px rgb(65 90 119 / 0.2), 0 4px 10px -5px rgb(65 90 119 / 0.1);
     
-    --card-shadow:     0 4px 6px -1px rgb(13 27 42 / 0.5), 0 2px 4px -2px rgb(13 27 42 / 0.5);
-    --hover-shadow:    0 10px 25px -5px rgb(65 90 119 / 0.4), 0 4px 10px -5px rgb(65 90 119 / 0.3);
-    
-    --table-header-bg: var(--dusk-blue);
-    --table-row-even:  var(--prussian-blue);
-    --table-row-hover: var(--dusk-blue);
+    --table-header-bg: rgb(119 141 169 / 0.2); /* faint dusty-denim */
+    --table-row-even:  rgb(119 141 169 / 0.05);
+    --table-row-hover: rgb(119 141 169 / 0.15);
+    --speed:           0.35s;
+    --font-main:       'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body.dark-theme {
+    --bg-primary:      #0f172a;
+    --bg-secondary:    #1e293b;
+    --text-primary:    #f8fafc;
+    --text-secondary:  #94a3b8;
+    --primary-color:   #6366f1;
+    --primary-hover:   #818cf8;
+    --accent-color:    #f472b6;
+    --border-color:    #334155;
+    --card-shadow:     0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --hover-shadow:    0 10px 25px -5px rgb(99 102 241 / 0.3), 0 4px 10px -5px rgb(99 102 241 / 0.2);
+    --table-header-bg: #334155;
+    --table-row-even:  #1e293b;
+    --table-row-hover: #2d3f55;
 }
 
 /* ============================================================
