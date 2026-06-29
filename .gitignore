@@ -1,2 +1,2 @@
 # Ignore the cleanup script so it doesn't get pushed to Vercel/GitHub
-remove_comments.js
+
