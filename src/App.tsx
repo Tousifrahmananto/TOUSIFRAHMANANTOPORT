@@ -233,6 +233,44 @@ export default function App() {
   const timer = useRef<number | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   useEffect(() => {
+    const findTarget = (hash: string) => {
+      try {
+        return document.getElementById(decodeURIComponent(hash.slice(1)));
+      } catch {
+        return null;
+      }
+    };
+    const scrollToTarget = (target: HTMLElement) => {
+      target.scrollIntoView({ block: "start" });
+      if (!target.hasAttribute("tabindex")) {
+        target.setAttribute("tabindex", "-1");
+        target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+      }
+      target.focus({ preventScroll: true });
+    };
+    const navigate = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null;
+      if (!anchor || anchor.target || anchor.hasAttribute("download")) return;
+      const url = new URL(anchor.href);
+      if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+      const target = findTarget(url.hash);
+      if (!target) return;
+      event.preventDefault();
+      scrollToTarget(target);
+    };
+    const initialTarget = findTarget(location.hash);
+    const frame = initialTarget ? requestAnimationFrame(() => {
+      scrollToTarget(initialTarget);
+      history.replaceState(history.state, "", location.pathname + location.search);
+    }) : undefined;
+    document.addEventListener("click", navigate);
+    return () => {
+      if (frame !== undefined) cancelAnimationFrame(frame);
+      document.removeEventListener("click", navigate);
+    };
+  }, []);
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries)
