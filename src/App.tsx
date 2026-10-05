@@ -29,7 +29,7 @@ function Clock() {
   }, []);
   return (
     <span>
-      Dhaka, BD <span className="clock-time">{time}</span>
+      Dhaka, Bangladesh <span className="clock-time">{time}</span>
     </span>
   );
 }
@@ -315,7 +315,6 @@ export default function App() {
           </a>
           <div className="side-divider" />
           <Clock />
-          <span className="sidebar-note">Dhaka, Bangladesh</span>
         </div>
       </aside>
       <header className="mobile-header">
