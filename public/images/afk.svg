@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect width="1440" height="1000" fill="#161815"/><g font-family="Arial,sans-serif">
+<path d="M0 100H1440M230 100V1000" stroke="#393b35"/>
+<text x="42" y="63" fill="#f4f2e9" font-size="28" font-weight="700">AFK ARENA<tspan fill="#d9532a">.</tspan></text>
+<text x="1060" y="60" fill="#8e9287" font-size="16">TOURNAMENT OPERATIONS</text>
+<rect x="24" y="146" width="181" height="52" rx="2" fill="#2a2d27"/><text x="44" y="178" fill="#f4f2e9" font-size="19">Tournaments</text>
+<g fill="#8e9287" font-size="19"><text x="44" y="241">Teams</text><text x="44" y="304">Match results</text><text x="44" y="367">Leaderboard</text><text x="44" y="430">Media library</text></g>
+<text x="288" y="172" fill="#9c9e94" font-size="14" letter-spacing="3">COMPETITION / BRACKET</text>
+<text x="288" y="245" fill="#f4f2e9" font-size="48" font-weight="700">Every match. One place.</text>
+<text x="290" y="291" fill="#8e9287" font-size="20">Single elimination · Team registration · Real-time updates</text>
+<path d="M288 340H1380" stroke="#393b35"/>
+<g fill="#8e9287" font-size="14" letter-spacing="2"><text x="290" y="390">QUARTER-FINALS</text><text x="695" y="390">SEMI-FINALS</text><text x="1100" y="390">FINAL</text></g>
+<g stroke="#44473d" fill="#20231d"><rect x="288" y="420" width="285" height="98" rx="2"/><rect x="288" y="550" width="285" height="98" rx="2"/><rect x="288" y="680" width="285" height="98" rx="2"/><rect x="288" y="810" width="285" height="98" rx="2"/><rect x="692" y="484" width="285" height="98" rx="2"/><rect x="692" y="744" width="285" height="98" rx="2"/><rect x="1095" y="613" width="285" height="98" rx="2"/></g>
+<g stroke="#5c6153" fill="none" stroke-width="2"><path d="M573 469h55v64h64M573 599h55v-66M573 729h55v64h64M573 859h55v-66M977 533h58v129h60M977 793h58V662"/></g>
+<g fill="#f4f2e9" font-size="20"><text x="309" y="454">Team Alpha<tspan x="535">2</tspan></text><text x="309" y="497" fill="#8e9287">Team Bravo<tspan x="535">0</tspan></text><text x="309" y="584">Team Delta<tspan x="535">2</tspan></text><text x="309" y="627" fill="#8e9287">Team Echo<tspan x="535">1</tspan></text><text x="309" y="714">Team Foxtrot<tspan x="535">2</tspan></text><text x="309" y="757" fill="#8e9287">Team Gamma<tspan x="535">0</tspan></text><text x="309" y="844">Team Nova<tspan x="535">2</tspan></text><text x="309" y="887" fill="#8e9287">Team Omega<tspan x="535">1</tspan></text><text x="713" y="518">Team Alpha</text><text x="713" y="561">Team Delta</text><text x="713" y="778">Team Foxtrot</text><text x="713" y="821">Team Nova</text><text x="1115" y="654">Grand final</text><text x="1115" y="686" fill="#8e9287" font-size="16">Awaiting results</text></g>
+<path d="M288 420V518" stroke="#d9532a" stroke-width="4"/>
+</g></svg>

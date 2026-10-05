@@ -1,4 +1,12 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "redirects": [
+    { "source": "/projects", "destination": "/#work", "permanent": true },
+    { "source": "/projects.html", "destination": "/#work", "permanent": true },
+    { "source": "/hobbies", "destination": "/#about", "permanent": true },
+    { "source": "/hobbies.html", "destination": "/#about", "permanent": true }
+  ],
+  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }]
 }

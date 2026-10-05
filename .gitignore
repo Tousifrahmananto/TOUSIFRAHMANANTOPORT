@@ -1,2 +1,9 @@
 # Ignore the cleanup script so it doesn't get pushed to Vercel/GitHub
 
+node_modules/
+dist/
+output/
+.playwright-cli/
+*.tsbuildinfo
+.env*
+
