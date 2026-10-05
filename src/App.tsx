@@ -1,4 +1,5 @@
 import Skills from "./Skills";
+import useScrollMotion from "./useScrollMotion";
 import { useEffect, useRef, useState } from "react";
 import {
   email,
@@ -225,6 +226,7 @@ const credentials = [
 ];
 
 export default function App() {
+  useScrollMotion();
   const [filter, setFilter] = useState("All work");
   const [selected, setSelected] = useState<Project | null>(null);
   const [active, setActive] = useState("home");
@@ -298,6 +300,7 @@ export default function App() {
   );
   return (
     <>
+      <div className="reading-progress" aria-hidden="true"><span /></div>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
