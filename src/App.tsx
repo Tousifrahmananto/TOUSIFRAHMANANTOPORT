@@ -229,6 +229,7 @@ export default function App() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [active, setActive] = useState("home");
   const [copyStatus, setCopyStatus] = useState("");
+  const copied = copyStatus === "Email copied.";
   const timer = useRef<number | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
   useEffect(() => {
@@ -652,7 +653,13 @@ export default function App() {
               </p>
               <div className="email-row">
                 <a href={`mailto:${email}`}>{email}</a>
-                <button onClick={copy} aria-label="Copy email address">
+                <button
+                  className={`copy-email${copied ? " is-copied" : ""}`}
+                  onClick={copy}
+                  aria-label={copied ? "Email copied. Copy again" : "Copy email address"}
+                  type="button"
+                >
+                  <span className="copy-icon" aria-hidden="true">
                   <svg
                     width="20"
                     height="20"
@@ -665,10 +672,12 @@ export default function App() {
                     <rect x="8" y="8" width="12" height="12" rx="1" />
                     <path d="M16 8V4H4v12h4" />
                   </svg>
+                  </span>
+                  <span className="copy-label" aria-hidden="true">Copied</span>
                 </button>
               </div>
               <p className="copy-status" role="status">
-                {copyStatus}
+                <span className={copied ? "sr-only" : undefined}>{copyStatus}</span>
               </p>
             </div>
             <div className="socials">
