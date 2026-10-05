@@ -71,7 +71,7 @@ export const projects: Project[] = [
     approach:
       "I used Supabase authentication and verified bearer tokens on the server. A storage abstraction lets the app use either Vercel Blob or Supabase Storage. Users can search, browse recent and shared files, delete documents and create public sharing links.",
     detail:
-      "Protected API routes identify the owner through a verified session rather than a user ID sent by the client. Uploading, finding, viewing and sharing documents all sit within the same interface.",
+      "Protected API routes identify the owner through a verified session rather than a user ID sent by the client. Users can upload, find, view and share documents in the same interface.",
   },
   {
     id: "medipay",
@@ -80,11 +80,11 @@ export const projects: Project[] = [
     category: "Web Apps",
     label: "Healthcare billing & settlement",
     summary:
-      "I built MediPay to handle hospital billing when patients pay in parts. It keeps invoices, payments, refunds and reconciliation in sync across the billing process.",
+      "I built MediPay to handle hospital billing when patients make partial payments. It keeps invoices, payments, refunds and reconciliation in sync across the billing process.",
     stack: ["React", "Node.js", "MongoDB", "SSLCOMMERZ"],
     repo: `${github}/SAAS_PROJECT`,
     challenge:
-      "Patient records, encounters, invoices and settlements all need to agree. I had to account for partial payments and refunds as well as the usual billing steps.",
+      "Patient records, encounters, invoices and settlements all need to stay consistent. I had to account for partial payments and refunds as well as the usual billing steps.",
     approach:
       "I delivered 16 screens across three release milestones. Immutable invoice snapshots and MongoDB Decimal128 keep financial calculations consistent. Settlement uses transactions and idempotent operations for SSLCOMMERZ and Bangla QR checkout methods.",
     detail:
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     approach:
       "I paired Three.js rendering with Cannon-es rigid-body simulation. The lab supports primitive creation, GLB/GLTF/OBJ imports, transform controls and material presets. Drop, bounce, explosion and gravity scenarios give users focused experiments to run.",
     detail:
-      "The lab records speed and height then exports run history as JSON or CSV. It is a functional prototype. Imported models use bounding boxes for collisions while fire, wind and water use approximations intended for games. Uploaded models stay in the browser.",
+      "The lab records speed and height. Users can export their run history as JSON or CSV. It is a functional prototype. Imported models use bounding boxes for collisions while fire, wind and water use approximations intended for games. Uploaded models stay in the browser.",
   },
   {
     id: "blog",
@@ -121,9 +121,9 @@ export const projects: Project[] = [
     challenge:
       "Readers, authors and administrators need different things from a blog. I connected the public reading pages with publishing tools and administrator controls.",
     approach:
-      "I built session-based authentication with password hashing then added post creation and editing, category management, featured posts, search, comments and like/unlike actions. Authors manage their own posts. Admins manage users and categories.",
+      "I built session-based authentication with password hashing. I then added post creation and editing, category management, featured posts, search, comments and the ability to like or unlike posts. Authors manage their own posts. Admins manage users and categories.",
     detail:
-      "The app uses procedural PHP and MySQL and runs on Apache/XAMPP. The preview illustrates the interface with sample content. The repository includes source code and setup instructions. There is no linked public deployment.",
+      "The app uses procedural PHP with MySQL and runs on Apache/XAMPP. The preview illustrates the interface with sample content. The repository includes source code and setup instructions. There is no linked public deployment.",
   },
   {
     id: "geomap",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     approach:
       "I used Provider to manage entity state and flutter_map with OpenStreetMap tiles for map views. image_picker handles uploads. geolocator captures the current position. The app uses an HTTP API for record operations.",
     detail:
-      "I built this for a mobile-development coursework project. The repository includes list, map, add and update screens. It depends on the course API so I’ve shared it as source rather than a deployed app. The thumbnail illustrates the interface.",
+      "I built this app for a mobile development course. The repository includes screens for listing, mapping, adding and updating records. The app depends on the course API. I’ve shared its source code rather than linking to a deployed app. The thumbnail illustrates the interface.",
   },
   {
     id: "workshop",
@@ -149,14 +149,14 @@ export const projects: Project[] = [
     category: "Web Apps",
     label: "Car-service booking & administration",
     summary:
-      "This PHP application connects a customer booking form with a protected administrator workspace. Customers submit appointments and staff can review and edit them.",
+      "This PHP application connects a customer booking form with a protected administrator workspace. Customers book appointments that staff can review and edit.",
     stack: ["PHP", "MySQL", "Sessions", "CSS"],
     repo: `${github}/CSE391_ASSIGNMENT3`,
     challenge:
       "A booking form alone wasn’t enough. I needed to save appointments and give staff a separate place to review and edit them.",
     approach:
-      "I built the customer form, database storage, administrator login and appointment editing. Each mechanic can take four appointments per day. The same phone number cannot book twice on one date. Setup includes a MySQL schema and local XAMPP instructions.",
+      "I built the customer form, database storage, administrator login and appointment editing. Each mechanic can accept up to four appointments per day. A customer cannot use the same phone number to book twice on the same date. The repository includes a MySQL schema and instructions for running the app locally with XAMPP.",
     detail:
-      "This coursework app uses server-rendered forms, session authentication and CRUD workflows. I included it because appointment booking adds a distinct use case to my work. The preview uses sample data to illustrate the interface. The source is available without a linked live deployment.",
+      "This coursework app uses server-rendered forms, session authentication and CRUD workflows. I included it because appointment booking adds a distinct use case to my work. The preview uses sample data to illustrate the interface. The source code is available in the repository. There is no linked live deployment.",
   },
 ];

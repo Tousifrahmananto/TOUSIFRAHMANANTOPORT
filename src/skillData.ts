@@ -12,7 +12,7 @@ export const skillGroups = [
       { name: "Python", description: "I taught Python syntax, control flow, functions and problem solving at Dreamers Academy. I also used Python in my language-model research and Django work.", evidence: background },
       { name: "TypeScript", description: "I use TypeScript in React and Next.js applications, including CodeSwitch, The Archive and EduCore.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "JavaScript", description: "My full-stack web work includes JavaScript on the frontend and Node.js on the backend. AFK Arena connects that work through live tournament updates.", evidence: evidence("afk", "Explore AFK Arena") },
-      { name: "Java", description: "Java is one of the programming languages in my résumé. My university coursework includes object-oriented programming and data structures and algorithms.", evidence: listed },
+      { name: "Java", description: "Java is one of the programming languages in my résumé. My university coursework includes object-oriented programming as well as data structures and algorithms.", evidence: listed },
       { name: "C++", description: "C++ is part of my programming background and one of the five languages supported by CodeSwitch. My coursework also covers data structures and algorithms.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Dart", description: "I used Dart with Flutter to build Geo Entity Manager, a mobile app with geographic records, photos and map views.", evidence: evidence("geomap", "Explore Geo Entity Manager") },
       { name: "Lua", description: "I developed a Lua curriculum for Roblox Studio game development and gave learners individual feedback at Dreamers Academy.", evidence: background },
@@ -26,7 +26,7 @@ export const skillGroups = [
       { name: "Next.js", description: "I built The Archive with Next.js and TypeScript. EduCore also uses Next.js for course delivery, progress tracking and assessments.", evidence: evidence("archive", "Explore The Archive") },
       { name: "TypeScript", description: "TypeScript is part of my frontend stack across React and Next.js projects, including the editor in CodeSwitch and the document interface in The Archive.", evidence: evidence("archive", "Explore The Archive") },
       { name: "Tailwind CSS", description: "Tailwind CSS is listed in my frontend toolkit alongside React, Next.js and TypeScript.", evidence: listed },
-      { name: "Flutter", description: "Geo Entity Manager uses Flutter for list, map, add and update screens. I used Provider for state, image_picker for photos and geolocator for GPS capture.", evidence: evidence("geomap", "Explore Geo Entity Manager") },
+      { name: "Flutter", description: "Geo Entity Manager uses Flutter for screens that list, map, add and update geographic records. I used Provider for state, image_picker for photos and geolocator for GPS capture.", evidence: evidence("geomap", "Explore Geo Entity Manager") },
     ],
   },
   {
@@ -38,7 +38,7 @@ export const skillGroups = [
       { name: "Django", description: "CodeSwitch’s Django backend coordinates AI providers and handles authentication and code execution requests.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Django REST Framework", description: "I built CodeSwitch’s REST API with httpOnly JWT cookies, brute-force lockouts and Content Security Policy middleware.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "REST APIs", description: "I work from API design through to the connected interface. EduCore uses REST APIs with Strapi while my other applications connect web and mobile clients to backend services.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
-      { name: "Socket.IO", description: "I used Socket.IO for AFK Arena’s live notifications and interface updates across single elimination, double elimination and round robin tournaments.", evidence: evidence("afk", "Explore AFK Arena") },
+      { name: "Socket.IO", description: "I used Socket.IO for AFK Arena’s live notifications and interface updates across single-elimination, double-elimination and round-robin tournaments.", evidence: evidence("afk", "Explore AFK Arena") },
     ],
   },
   {
@@ -47,8 +47,8 @@ export const skillGroups = [
     items: [
       { name: "MongoDB", description: "MediPay uses immutable invoice snapshots and MongoDB Decimal128 for exact financial calculations. Its settlement workflow handles partial payments, refunds and reconciliation.", evidence: evidence("medipay", "Explore MediPay") },
       { name: "PostgreSQL", description: "PostgreSQL is part of my database toolkit. My full-stack work includes schema design and database-backed applications.", evidence: listed },
-      { name: "Supabase", description: "I designed The Archive’s Supabase schema and authentication flow. Authenticated uploads and per-user bearer-token isolation keep document access tied to its owner.", evidence: evidence("archive", "Explore The Archive") },
-      { name: "Firebase", description: "Firebase is listed under databases and cloud in my résumé. I don’t attach a specific public project to it here.", evidence: listed },
+      { name: "Supabase", description: "I designed The Archive’s Supabase schema and authentication flow. Authenticated uploads and per-user bearer-token isolation keep document access scoped to each user.", evidence: evidence("archive", "Explore The Archive") },
+      { name: "Firebase", description: "Firebase is listed under databases and cloud in my résumé. No specific public project is linked to it here.", evidence: listed },
       { name: "Vercel", description: "I deployed The Archive’s Next.js interface to Vercel. The live project includes secure in-browser PDF previews and user-scoped document storage.", evidence: evidence("archive", "Explore The Archive") },
       { name: "Railway", description: "Railway is part of the cloud and deployment toolkit listed in my résumé.", evidence: listed },
     ],
@@ -63,7 +63,7 @@ export const skillGroups = [
       { name: "LangChain", description: "LangChain is included in my AI engineering toolkit. My résumé lists it alongside model APIs, prompt engineering and NLP.", evidence: listed },
       { name: "Prompt engineering", description: "My research included a response-control framework that checks empathy, relevance and support quality, regenerates unsuitable responses and provides fallback replies.", evidence: research },
       { name: "NLP", description: "I evaluated emotional-support responses using 37 matched prompt pairs and a separate 360-turn study. We compared automated metrics with three AI-judge collections across 320 shared responses.", evidence: research },
-      { name: "QLoRA & model adaptation", description: "I led a five-member team that adapted Mistral, Qwen, DeepSeek and Llama with QLoRA for consumer-grade hardware. We documented limits in repeated responses, fallback behaviour and evaluation consistency.", evidence: research },
+      { name: "QLoRA & model adaptation", description: "I led a five-member team that adapted Mistral, Qwen, DeepSeek and Llama with QLoRA for consumer-grade hardware. We documented limitations involving repeated responses, fallback behaviour and evaluation consistency.", evidence: research },
     ],
   },
   {
@@ -71,7 +71,7 @@ export const skillGroups = [
     intro: "Permissions and authentication are part of my application work, from a document vault to tournament operations and learning platforms.",
     items: [
       { name: "JWT", description: "CodeSwitch uses httpOnly JWT cookies and brute-force lockouts. AFK Arena uses JWT-authenticated REST APIs for its stakeholder workflows.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
-      { name: "RBAC", description: "EduCore separates Admin, Content Manager, Instructor and Student permissions. AFK Arena also has role-based access for administrators, players, team managers and sponsors.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
+      { name: "RBAC", description: "EduCore provides separate permissions for Admins, Content Managers, Instructors and Students. AFK Arena also has role-based access for administrators, players, team managers and sponsors.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
       { name: "CSP", description: "I added Content Security Policy middleware to CodeSwitch’s Django REST API as part of its authentication and abuse-risk controls.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
     ],
   },

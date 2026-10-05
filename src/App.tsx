@@ -115,7 +115,7 @@ function ProjectRow({
       <button
         className="project-visual"
         onClick={() => open(project)}
-        aria-label={`Read the ${project.title} case study`}
+        aria-label={`Read project notes for ${project.title}`}
       >
         <span className="cover-title" aria-hidden="true">
           {project.title}
@@ -200,7 +200,7 @@ const credentials = [
     image: "fellowship-certificate.jpg",
     file: "millennium-fellowship.pdf",
     description:
-      "Completed the fellowship with Project SAFE with RICH Club Bangladesh.",
+      "Completed the fellowship through Project SAFE at RICH Club Bangladesh.",
   },
   {
     title: "Global Admissions Committee",
@@ -375,10 +375,6 @@ export default function App() {
             <div>
               <h2>What I’ve been building.</h2>
             </div>
-            <p>
-              Some of these projects began as coursework. Others came from
-              esports, teaching or a problem I wanted to explore.
-            </p>
           </div>
           <div className="work-toolbar">
             <div className="filters" role="group" aria-label="Filter projects">
@@ -397,7 +393,7 @@ export default function App() {
               ))}
             </div>
             <span className="work-count" aria-live="polite">
-              {visible.length} projects
+              {visible.length} {visible.length === 1 ? "project" : "projects"}
             </span>
           </div>
           <div className="project-list" key={filter}>
@@ -428,7 +424,7 @@ export default function App() {
             <div className="research-content">
               <div>
                 <h3>
-                  Studying emotional support
+                  Studying emotional support{" "}
                   <br />
                   <span className="muted">with local language models.</span>
                 </h3>
@@ -470,8 +466,8 @@ export default function App() {
           <p>
             I built EduCore with Next.js and Strapi. The platform supports
             four user roles, course enrollment, saved progress and auto-graded
-            quizzes. I also built its content workflows, role management and
-            platform statistics.
+            quizzes. I also built its content workflows and role management
+            features and added platform statistics.
           </p>
           <span className="stack">
             Next.js / TypeScript / Strapi / REST APIs / RBAC
@@ -505,7 +501,7 @@ export default function App() {
               </p>
               <p>
                 At BRAC University, I studied Computer Science & Engineering
-                and built applications across the web and mobile. For my final-year
+                and built web and mobile applications. For my final-year
                 research, I worked with a five-member team on language-model
                 adaptation and evaluation.
               </p>
@@ -560,13 +556,13 @@ export default function App() {
                   "Project leadership",
                   "Lead Full-Stack Developer",
                   "AFK Arena / AFK Productions",
-                  "Built tournament orchestration for a 25+ member production team.",
+                  "Built tournament management software for a production team of 25+ members.",
                 ],
                 [
                   "Graduated",
                   "BSc, Computer Science & Engineering",
                   "BRAC University",
-                  "Focus: machine learning, web development and cyber security.",
+                  "Focus: machine learning, web development and cybersecurity.",
                 ],
               ].map(([date, title, org, description]) => (
                 <div className="experience-row" key={title}>
@@ -603,7 +599,7 @@ export default function App() {
                   href={`/documents/${credential.file}`}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Open ${credential.title} ${credential.type}`}
+                  aria-label={`Open the ${credential.type.toLowerCase()} for ${credential.title}`}
                 >
                   <img
                     src={`/images/${credential.image}`}
@@ -638,7 +634,7 @@ export default function App() {
         <section id="contact" className="contact section-shell">
           <div className="contact-heading">
             <h2>
-              Let’s talk about
+              Let’s talk about{" "}
               <br />
               <span className="accent">what’s next.</span>
             </h2>
@@ -646,7 +642,7 @@ export default function App() {
           <div className="contact-bottom">
             <div>
               <p>
-                I’m looking for my next engineering role.
+                I’m looking for my next engineering role.{" "}
                 <br />
                 If my work fits your team or project, send me an email.
               </p>

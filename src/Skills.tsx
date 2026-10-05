@@ -14,7 +14,7 @@ export default function Skills({ onProjectLink }: { onProjectLink: () => void })
     <section id="skills" className="skills section-shell" aria-labelledby="skills-title">
       <div className="section-heading">
         <div><h2 id="skills-title">The skills behind the work.</h2></div>
-        <p>Choose an area then open a skill to see how it connects to my projects, teaching or research.</p>
+        <p>Choose an area, then open a skill to see how it connects to my projects, teaching or research.</p>
       </div>
       <div className="skills-layout">
         <div className="skills-tabs" role="tablist" aria-label="Skill areas">
