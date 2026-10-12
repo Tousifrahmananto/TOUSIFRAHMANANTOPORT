@@ -118,32 +118,6 @@ function ProjectRow({
         onClick={() => open(project)}
         aria-label={`Read project notes for ${project.title}`}
       >
-        <span className="cover-title" aria-hidden="true">
-          {project.title}
-        </span>
-        <span className="cover-mark" aria-hidden="true">
-          {
-            (
-              {
-                codeswitch: "{ }",
-                afk: "↗",
-                archive: "A",
-                medipay: "+",
-                physics: "↝",
-                blog: "¶",
-                geomap: "⌖",
-                workshop: "⚙",
-              } as Record<string, string>
-            )[project.id]
-          }
-        </span>
-        <div className="browser-bar">
-          <span className="browser-dots">● ● ●</span>
-          <span>
-            {project.title.toLowerCase().replaceAll(" ", "")} / preview
-          </span>
-          <Arrow />
-        </div>
         <img
           src={`/images/${project.id}.${illustration ? "svg" : "jpg"}`}
           alt={`${project.title} ${illustration ? "interface illustration" : "website preview"}`}
@@ -304,117 +278,72 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <aside className="sidebar">
+      <header className="site-header">
         <a className="brand" href="#home" aria-label="Tousif Rahman Anto home">
-          <span className="brand-monogram">
-            t<span className="accent">r</span>
-            <span className="brand-dot">.</span>
-          </span>
-          <span>Tousif Rahman Anto</span>
+          Tousif Rahman Anto<span className="accent">.</span>
         </a>
-        <p className="sidebar-role">
-          Full-stack developer
-        </p>
-        <div className="side-divider" />
-        <span className="eyebrow nav-label">Explore</span>
         <nav aria-label="Main navigation">
           {[
-            ["home", "Hello"],
-            ["work", "Selected work"],
-            ["about", "My background"],
-            ["skills", "Skills in practice"],
-            ["credentials", "Credentials"],
-            ["contact", "Get in touch"],
+            ["work", "Work"], ["about", "About"], ["skills", "Skills"],
+            ["credentials", "Credentials"], ["contact", "Contact"],
           ].map(([id, label]) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className={active === id ? "current" : ""}
-              aria-current={active === id ? "location" : undefined}
-            >
-              {label}
-              <span className="nav-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </a>
+            <a key={id} href={`#${id}`} className={active === id ? "current" : ""}
+              aria-current={active === id ? "location" : undefined}>{label}</a>
           ))}
         </nav>
-        <a
-          className="resume-link"
-          href="/documents/tousif-rahman-anto-resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Read my résumé <Arrow />
-        </a>
-        <div className="sidebar-bottom">
-          <a href={github} target="_blank" rel="noreferrer">
-            GitHub <Arrow />
-          </a>
-          <a href={linkedin} target="_blank" rel="noreferrer">
-            LinkedIn <Arrow />
-          </a>
-          <div className="side-divider" />
-          <Clock />
-        </div>
-      </aside>
-      <header className="mobile-header">
-        <a href="#home">
-          Tousif<span className="accent">.</span>
-        </a>
-        <nav aria-label="Mobile navigation">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#credentials">Credentials</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <a className="header-resume" href="/documents/tousif-rahman-anto-resume.pdf"
+          target="_blank" rel="noreferrer">Résumé <Arrow /></a>
       </header>
       <main id="main">
-        <section id="home" className="hero section-shell">
-          <div className="hero-top">
-            <span className="availability">
-              <span className="status-dot" />
-              Open to engineering opportunities
-            </span>
-            <span className="eyebrow">Based in Dhaka, Bangladesh</span>
-          </div>
+        <section id="home" className="hero">
           <div className="hero-intro">
-            <div>
-              <span className="hello">Hi, I’m</span>
-              <h1>
-                Tousif Rahman Anto<span className="accent">.</span>
-              </h1>
+            <div className="hero-copy">
+              <p className="hello">Full-stack developer · Dhaka, Bangladesh</p>
+              <h1>I build software<br />for <span className="accent">everyday work.</span></h1>
               <p className="hero-description">
-                I build web applications. I’ve also taught coding, worked in
-                esports operations and studied language models.
+                I’m Tousif. I build web applications and tools that help people
+                get things done.
               </p>
               <p className="hero-detail">
-                I studied Computer Science & Engineering at BRAC University.
-                I’m now looking for an engineering role where I can build
-                software and keep learning with a team.
+                My work has taken me from teaching coding to running esports
+                operations and studying language models at BRAC University.
+                These days, I’m looking for my next engineering role.
               </p>
-              <a
-                className="text-link"
-                href="#about"
-              >
-                More about my background ↓
-              </a>
+              <div className="hero-actions">
+                <a className="primary-link" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+                <a className="text-link" href="/documents/tousif-rahman-anto-resume.pdf"
+                  target="_blank" rel="noreferrer">Read my résumé <Arrow /></a>
+              </div>
+              <span className="availability"><span className="status-dot" />Open to engineering opportunities</span>
             </div>
             <div className="hero-portrait">
-              <img
-                src="/images/portrait.jpg"
-                alt="Tousif Rahman Anto in Dhaka"
-                width="750"
-                height="1000"
-              />
+              <img src="/images/portrait.jpg" alt="Tousif Rahman Anto in Dhaka"
+                width="750" height="1000" fetchPriority="high" />
+              <span className="portrait-note">Tousif Rahman Anto</span>
+            </div>
+            <dl className="hero-facts">
+              <div><dt>Projects to explore</dt><dd>{projects.length}<span>↗</span></dd></div>
+              <div><dt>Thesis team</dt><dd>5<span> members</span></dd></div>
+              <div><dt>Education</dt><dd>BRAC<span> CSE graduate</span></dd></div>
+            </dl>
+          </div>
+          <div className="expertise-strip" aria-label="Web applications, real-time systems, mobile development and language models">
+            <label className="motion-control"><input type="checkbox" />Pause motion</label>
+            <div className="expertise-track" aria-hidden="true">
+              {[0, 1].map((copy) => (
+                <div className="expertise-set" key={copy}>
+                  <span>Web applications</span><span>Real-time systems</span>
+                  <span>Mobile development</span><span>Language models</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
         <section id="work" className="work section-shell">
           <div className="section-heading">
             <div>
-              <h2>What I’ve been building.</h2>
+              <p className="eyebrow accent">From idea to implementation</p>
+              <h2>Selected work<span className="accent">.</span></h2>
             </div>
           </div>
           <div className="work-toolbar">
@@ -465,34 +394,48 @@ export default function App() {
             <div className="research-content">
               <div>
                 <h3>
-                  Studying emotional support{" "}
-                  <br />
-                  <span className="muted">with local language models.</span>
+                  Building a chatbot that checks its own replies.
                 </h3>
                 <p>
-                  I led a five-member team that built a locally hosted chatbot
-                  for non-clinical emotional support. We adapted Mistral, Qwen,
-                  DeepSeek and Llama with QLoRA. We then studied empathy and
-                  response quality along with the limits of our evaluation
-                  methods.
+                  My thesis focused on an emotional-support chatbot that runs locally.
+                  I led a team of five. We brought model adaptation, response checks
+                  and conversation memory together in one system for non-clinical use.
                 </p>
+                <p>
+                  I built four checks for empathy consistency, response drift,
+                  support quality and support consistency. Before sending a reply,
+                  the system uses those checks to decide whether to try again or
+                  return a fallback response. Correction stays within set limits.
+                </p>
+                <p>
+                  I prepared the conversation data and brought in Mistral, Qwen,
+                  DeepSeek and Llama for comparison. Using 4-bit QLoRA, we adapted
+                  7B–8B models on a consumer GPU with 12 GB of memory.
+                </p>
+                <p>
+                  I also built the Gradio interface and added user ratings,
+                  identifier redaction and optional conversation memory in MongoDB.
+                  Accepted conversations helped shape later prompts and summaries.
+                  The model’s weights stayed fixed while people chatted with it.
+                </p>
+                <span className="stack">Python / QLoRA / Mistral / Gradio / MongoDB</span>
                 <a
                   className="text-link"
                   href="/documents/tousif-rahman-anto-resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Research details in my résumé <Arrow />
+                  Read about my thesis <Arrow />
                 </a>
               </div>
               <div className="research-facts">
                 <div>
                   <strong>4</strong>
-                  <span>Model families adapted</span>
+                  <span>Checks before a reply is sent</span>
                 </div>
                 <div>
-                  <strong>360</strong>
-                  <span>Turns in the conversational study</span>
+                  <strong>12 GB</strong>
+                  <span>GPU memory used to adapt the models</span>
                 </div>
               </div>
             </div>
@@ -543,8 +486,8 @@ export default function App() {
               <p>
                 At BRAC University, I studied Computer Science & Engineering
                 and built web and mobile applications. For my final-year
-                research, I worked with a five-member team on language-model
-                adaptation and evaluation.
+                thesis, I led a team of five building an emotional-support chatbot
+                that runs locally, checks its replies and remembers conversations.
               </p>
               <p>
                 I also taught Python at Dreamers Academy and developed a
@@ -579,7 +522,7 @@ export default function App() {
                   "2025 to 2026",
                   "Research Project Lead",
                   "Local emotional-support conversational AI",
-                  "Led a five-member team working on model adaptation, evaluation and privacy safeguards.",
+                  "Led a team of five building a local emotional-support chatbot with response checks and conversation memory.",
                 ],
                 [
                   "2024 to 2026",
@@ -594,8 +537,8 @@ export default function App() {
                   "Project SAFE with RICH Club Bangladesh.",
                 ],
                 [
-                  "Project leadership",
-                  "Lead Full-Stack Developer",
+                  "Project work",
+                  "Full-Stack Developer",
                   "AFK Productions",
                   "Built tournament management software for a production team of 25+ members.",
                 ],
@@ -740,7 +683,7 @@ export default function App() {
         </section>
         <footer className="footer section-shell">
           <span>© {new Date().getFullYear()} Tousif Rahman Anto</span>
-          <span>Dhaka, Bangladesh</span>
+          <Clock />
           <a href="#home">Back to top ↑</a>
         </footer>
       </main>

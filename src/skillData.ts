@@ -61,9 +61,9 @@ export const skillGroups = [
       { name: "Groq API", description: "Groq is one of CodeSwitch’s three AI providers. A deterministic regex fallback gives the app a second conversion path when model services are unavailable.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Gemini API", description: "I integrated Gemini into CodeSwitch’s multi-provider conversion engine, which supports bidirectional conversion across five programming languages.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "LangChain", description: "LangChain is included in my AI engineering toolkit. My résumé lists it alongside model APIs, prompt engineering and NLP.", evidence: listed },
-      { name: "Prompt engineering", description: "My research included a response-control framework that checks empathy, relevance and support quality, regenerates unsuitable responses and provides fallback replies.", evidence: research },
-      { name: "NLP", description: "I evaluated emotional-support responses using 37 matched prompt pairs and a separate 360-turn study. We compared automated metrics with three AI-judge collections across 320 shared responses.", evidence: research },
-      { name: "QLoRA & model adaptation", description: "I led a five-member team that adapted Mistral, Qwen, DeepSeek and Llama with QLoRA for consumer-grade hardware. We documented limitations involving repeated responses, fallback behaviour and evaluation consistency.", evidence: research },
+      { name: "Prompt engineering", description: "I used response checks to guide another attempt or a fallback reply before sending an answer. Accepted conversations helped shape later prompts and summaries. The model’s weights stayed fixed during chats.", evidence: research },
+      { name: "NLP", description: "I prepared conversation data for our thesis chatbot and built four checks covering empathy consistency, response drift, support quality and support consistency.", evidence: research },
+      { name: "QLoRA & model adaptation", description: "For my thesis, I led a team of five and brought in Mistral, Qwen, DeepSeek and Llama for comparison. We used 4-bit QLoRA to adapt 7B–8B models on a consumer GPU with 12 GB of memory.", evidence: research },
     ],
   },
   {

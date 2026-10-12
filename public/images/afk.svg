@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
 <rect width="1440" height="1000" fill="#161815"/><g font-family="Arial,sans-serif">
 <path d="M0 100H1440M230 100V1000" stroke="#393b35"/>
-<text x="42" y="63" fill="#f4f2e9" font-size="28" font-weight="700">AFK ARENA<tspan fill="#d9532a">.</tspan></text>
+<text x="42" y="63" fill="#f4f2e9" font-size="28" font-weight="700">AFK PRODUCTIONS<tspan fill="#d9532a">.</tspan></text>
 <text x="1060" y="60" fill="#8e9287" font-size="16">TOURNAMENT OPERATIONS</text>
 <rect x="24" y="146" width="181" height="52" rx="2" fill="#2a2d27"/><text x="44" y="178" fill="#f4f2e9" font-size="19">Tournaments</text>
 <g fill="#8e9287" font-size="19"><text x="44" y="241">Teams</text><text x="44" y="304">Match results</text><text x="44" y="367">Leaderboard</text><text x="44" y="430">Media library</text></g>

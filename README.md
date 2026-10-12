@@ -1,6 +1,6 @@
 # Tousif Rahman Anto — Portfolio
 
-A personal portfolio built with React, TypeScript, and Vite. A warm white canvas, fixed left navigation, compact introduction, full-color imagery, and a varied two-column project showcase. Jerry Chen is the primary layout reference, with Purva Bhandari's bold name treatment and personal details drawn from the supplied references. Every image retains its original colors; colored project covers frame the actual previews.
+A personal portfolio built with React, TypeScript and Vite. Inspired by Anjali Agrawal’s portfolio: a sticky full-width navigation, large split hero with a color portrait and factual project/research metrics, a moving expertise strip with a pause control, wide project rows and a dark interactive skills section. The palette stays warm neutral with a burnt orange accent. No radar or new dependencies.
 
 ## Run locally
 
@@ -25,7 +25,7 @@ The production output is `dist/`. Vercel is configured in `vercel.json` to run t
 - `src/App.tsx`: hero, about, availability, experience, education, research, and credentials. Millennium Fellowship and Global Admissions Committee roles are completed. The CV establishes BRAC graduate status and Dreamers Academy dates of 2024–2026.
 - `src/styles.css`: palette, typography, responsive layouts, and reduced-motion support.
 - `public/images/`: full-color screenshots, portrait, and certificate previews. Source-only projects have clearly labeled interface illustrations with sample data. MediPay's listed live deployment returned 404 when checked, so only the source is linked. All eight projects have direct repository links; only verified live projects show a live link.
-- `public/documents/`: résumé, Millennium Fellowship completion certificate, GAC appreciation certificate, and MCN recommendation. The recommendation confirms 40 application reviews in the completed 2026 cycle. The résumé PDF is the provided original; portfolio text incorporates the user's correction to the Millennium status.
+- `public/documents/`: résumé, Millennium Fellowship completion certificate, GAC appreciation certificate, and MCN recommendation. The recommendation confirms 40 application reviews in the completed 2026 cycle. The downloadable résumé is the updated 11 October 2026 CV from `D:/CV/Tousif_Rahman_Anto_Resume.pdf`. Thesis content follows its contribution-focused research description: interpretable response checks, bounded correction, conversational memory and local QLoRA adaptation.
 - `public/fonts/`: self-hosted font files with their licenses. No third-party font requests at runtime.
 
 ## Validation
