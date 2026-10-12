@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     id: "afk",
     number: "02",
-    title: "AFK Arena",
+    title: "AFK Productions",
     category: "Web Apps",
     label: "Real-time tournament operations",
     summary:
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     summary:
       "I built MediPay to handle hospital billing when patients make partial payments. It keeps invoices, payments, refunds and reconciliation in sync across the billing process.",
     stack: ["React", "Node.js", "MongoDB", "SSLCOMMERZ"],
-    repo: `${github}/SAAS_PROJECT`,
+    repo: `${github}/MediPay`,
     challenge:
       "Patient records, encounters, invoices and settlements all need to stay consistent. I had to account for partial payments and refunds as well as the usual billing steps.",
     approach:
@@ -100,7 +100,7 @@ export const projects: Project[] = [
       "Game Physics Lab lets you test an idea in the browser before rebuilding it in a game engine. You can import models, change physical materials, run experiments and export the measurements.",
     stack: ["React", "Three.js", "Cannon-es", "Vite"],
     live: "https://game-physics-engine-rho.vercel.app/",
-    repo: `${github}/game_physics_engine`,
+    repo: `${github}/Game-Physics-Lab`,
     challenge:
       "I wanted a hands-on way to test game-object physics without installing a game engine. The lab also needed to work without an account or a backend.",
     approach:
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     summary:
       "I built The Chuckle Chronicles as a PHP publishing platform. It brings together author accounts, categories, search, comments, likes and an admin workspace.",
     stack: ["PHP", "MySQL", "JavaScript", "CSS"],
-    repo: `${github}/Bloging__Site`,
+    repo: `${github}/The-Chuckle-Chronicles`,
     challenge:
       "Readers, authors and administrators need different things from a blog. I connected the public reading pages with publishing tools and administrator controls.",
     approach:
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     summary:
       "I built this Flutter app to show geographic records in a list and on a map. It brings photos, GPS capture and editable map markers into the same mobile workflow.",
     stack: ["Flutter", "Dart", "Provider", "OpenStreetMap"],
-    repo: `${github}/cse489mid`,
+    repo: `${github}/Geo-Entity-Manager`,
     challenge:
       "The list and map needed to stay in sync as users created and updated records. Each record contains a title, coordinates and an image.",
     approach:
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     summary:
       "This PHP application connects a customer booking form with a protected administrator workspace. Customers book appointments that staff can review and edit.",
     stack: ["PHP", "MySQL", "Sessions", "CSS"],
-    repo: `${github}/CSE391_ASSIGNMENT3`,
+    repo: `${github}/Workshop-Appointments`,
     challenge:
       "A booking form alone wasn’t enough. I needed to save appointments and give staff a separate place to review and edit them.",
     approach:

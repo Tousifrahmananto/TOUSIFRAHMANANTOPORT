@@ -11,7 +11,7 @@ export const skillGroups = [
     items: [
       { name: "Python", description: "I taught Python syntax, control flow, functions and problem solving at Dreamers Academy. I also used Python in my language-model research and Django work.", evidence: background },
       { name: "TypeScript", description: "I use TypeScript in React and Next.js applications, including CodeSwitch, The Archive and EduCore.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
-      { name: "JavaScript", description: "My full-stack web work includes JavaScript on the frontend and Node.js on the backend. AFK Arena connects that work through live tournament updates.", evidence: evidence("afk", "Explore AFK Arena") },
+      { name: "JavaScript", description: "My full-stack web work includes JavaScript on the frontend and Node.js on the backend. AFK Productions connects that work through live tournament updates.", evidence: evidence("afk", "Explore AFK Productions") },
       { name: "Java", description: "Java is one of the programming languages in my résumé. My university coursework includes object-oriented programming as well as data structures and algorithms.", evidence: listed },
       { name: "C++", description: "C++ is part of my programming background and one of the five languages supported by CodeSwitch. My coursework also covers data structures and algorithms.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Dart", description: "I used Dart with Flutter to build Geo Entity Manager, a mobile app with geographic records, photos and map views.", evidence: evidence("geomap", "Explore Geo Entity Manager") },
@@ -22,7 +22,7 @@ export const skillGroups = [
     id: "frontend", title: "Frontend & mobile",
     intro: "My frontend work covers web interfaces, live updates and mobile screens. The framework depends on what the application needs.",
     items: [
-      { name: "React", description: "I built React interfaces for CodeSwitch, MediPay and AFK Arena. In CodeSwitch, I used route-level code splitting and lazy loading for Monaco Editor.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
+      { name: "React", description: "I built React interfaces for CodeSwitch, MediPay and AFK Productions. In CodeSwitch, I used route-level code splitting and lazy loading for Monaco Editor.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Next.js", description: "I built The Archive with Next.js and TypeScript. EduCore also uses Next.js for course delivery, progress tracking and assessments.", evidence: evidence("archive", "Explore The Archive") },
       { name: "TypeScript", description: "TypeScript is part of my frontend stack across React and Next.js projects, including the editor in CodeSwitch and the document interface in The Archive.", evidence: evidence("archive", "Explore The Archive") },
       { name: "Tailwind CSS", description: "Tailwind CSS is listed in my frontend toolkit alongside React, Next.js and TypeScript.", evidence: listed },
@@ -33,12 +33,12 @@ export const skillGroups = [
     id: "backend", title: "Backend & APIs",
     intro: "I build the server-side workflows that connect an interface to its data, permissions and external services.",
     items: [
-      { name: "Node.js", description: "I used Node.js for MediPay’s billing backend and AFK Arena’s tournament platform. These projects cover payments, role-based workflows and live event operations.", evidence: evidence("medipay", "Explore MediPay") },
-      { name: "Express.js", description: "AFK Arena uses Express APIs for administrators, players, team managers and sponsors. Express is also part of MediPay’s backend stack.", evidence: evidence("afk", "Explore AFK Arena") },
+      { name: "Node.js", description: "I used Node.js for MediPay’s billing backend and AFK Productions’s tournament platform. These projects cover payments, role-based workflows and live event operations.", evidence: evidence("medipay", "Explore MediPay") },
+      { name: "Express.js", description: "AFK Productions uses Express APIs for administrators, players, team managers and sponsors. Express is also part of MediPay’s backend stack.", evidence: evidence("afk", "Explore AFK Productions") },
       { name: "Django", description: "CodeSwitch’s Django backend coordinates AI providers and handles authentication and code execution requests.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "Django REST Framework", description: "I built CodeSwitch’s REST API with httpOnly JWT cookies, brute-force lockouts and Content Security Policy middleware.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
       { name: "REST APIs", description: "I work from API design through to the connected interface. EduCore uses REST APIs with Strapi while my other applications connect web and mobile clients to backend services.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
-      { name: "Socket.IO", description: "I used Socket.IO for AFK Arena’s live notifications and interface updates across single-elimination, double-elimination and round-robin tournaments.", evidence: evidence("afk", "Explore AFK Arena") },
+      { name: "Socket.IO", description: "I used Socket.IO for AFK Productions’s live notifications and interface updates across single-elimination, double-elimination and round-robin tournaments.", evidence: evidence("afk", "Explore AFK Productions") },
     ],
   },
   {
@@ -70,8 +70,8 @@ export const skillGroups = [
     id: "security", title: "Authentication & access",
     intro: "Permissions and authentication are part of my application work, from a document vault to tournament operations and learning platforms.",
     items: [
-      { name: "JWT", description: "CodeSwitch uses httpOnly JWT cookies and brute-force lockouts. AFK Arena uses JWT-authenticated REST APIs for its stakeholder workflows.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
-      { name: "RBAC", description: "EduCore provides separate permissions for Admins, Content Managers, Instructors and Students. AFK Arena also has role-based access for administrators, players, team managers and sponsors.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
+      { name: "JWT", description: "CodeSwitch uses httpOnly JWT cookies and brute-force lockouts. AFK Productions uses JWT-authenticated REST APIs for its stakeholder workflows.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
+      { name: "RBAC", description: "EduCore provides separate permissions for Admins, Content Managers, Instructors and Students. AFK Productions also has role-based access for administrators, players, team managers and sponsors.", evidence: { href: "#educore-title", label: "Read about EduCore" } },
       { name: "CSP", description: "I added Content Security Policy middleware to CodeSwitch’s Django REST API as part of its authentication and abuse-risk controls.", evidence: evidence("codeswitch", "Explore CodeSwitch") },
     ],
   },

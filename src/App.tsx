@@ -596,7 +596,7 @@ export default function App() {
                 [
                   "Project leadership",
                   "Lead Full-Stack Developer",
-                  "AFK Arena / AFK Productions",
+                  "AFK Productions",
                   "Built tournament management software for a production team of 25+ members.",
                 ],
                 [
