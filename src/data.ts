@@ -47,6 +47,7 @@ export const projects: Project[] = [
     summary:
       "I brought registration, team management and live match progression into one esports platform. It grew out of my work at AFK Productions and the practical demands of tournament days.",
     stack: ["React", "Node.js", "MongoDB", "Socket.IO"],
+    live: "https://afk-productions-frontend.vercel.app/",
     repo: `${github}/AFK_PRODUCTIONS`,
     challenge:
       "Players, teams and event staff need to see the same tournament state. I needed clear permissions for each role so they could work together without sharing every control.",
