@@ -168,12 +168,22 @@ function ProjectRow({
 }
 const credentials = [
   {
+    title: "SQL (Advanced)",
+    type: "Certificate of accomplishment",
+    issuer: "HackerRank",
+    date: "12 October 2026",
+    image: "sql-advanced-certificate.jpg",
+    href: "https://yajgqpnfknhujdpdwkoq.supabase.co/storage/v1/object/public/pdfs/d9833da2-365e-426b-9571-525afa74bc62/sql_advanced_certificate-34c82a06ccd04f6c9c6aa4c2b639f269.pdf",
+    description:
+      "Passed the HackerRank SQL (Advanced) skills certification test.",
+  },
+  {
     title: "Millennium Fellowship",
     type: "Certificate of completion",
     issuer: "UNAI & Millennium Campus Network",
     date: "Class of 2025",
     image: "fellowship-certificate.jpg",
-    file: "millennium-fellowship.pdf",
+    href: "/documents/millennium-fellowship.pdf",
     description:
       "Completed the fellowship through Project SAFE at RICH Club Bangladesh.",
   },
@@ -183,7 +193,7 @@ const credentials = [
     issuer: "Millennium Campus Network",
     date: "2026 · Completed",
     image: "gac-certificate.jpg",
-    file: "gac-appreciation.pdf",
+    href: "/documents/gac-appreciation.pdf",
     description:
       "Served on the 2026 committee, reviewing 40 fellowship applications.",
   },
@@ -193,10 +203,11 @@ const credentials = [
     issuer: "Emmanuel Opatola, Admissions Manager",
     date: "10 August 2026",
     image: "recommendation.jpg",
-    file: "mcn-recommendation.pdf",
+    href: "/documents/mcn-recommendation.pdf",
     description:
       "MCN’s recommendation recognises my judgment and reliability during the admissions cycle and confirms that I completed my service.",
   },
+
 ];
 
 export default function App() {
@@ -327,16 +338,24 @@ export default function App() {
               <div><dt>Education</dt><dd>BRAC<span> CSE graduate</span></dd></div>
             </dl>
           </div>
-          <div className="expertise-strip" aria-label="Web applications, real-time systems, mobile development and language models">
-            <label className="motion-control"><input type="checkbox" />Pause motion</label>
-            <div className="expertise-track" aria-hidden="true">
-              {[0, 1].map((copy) => (
-                <div className="expertise-set" key={copy}>
-                  <span>Web applications</span><span>Real-time systems</span>
-                  <span>Mobile development</span><span>Language models</span>
-                </div>
-              ))}
+          <div className="expertise-strip">
+            <span className="expertise-label">Tools I use</span>
+            <div className="expertise-window" role="img"
+              aria-label="React, Next.js, Node.js, Django, PostgreSQL, MongoDB, Python and Docker">
+              <div className="expertise-track" aria-hidden="true">
+                {[0, 1].map((copy) => (
+                  <div className="expertise-set" key={copy}>
+                    <span>React</span><span>Next.js</span><span>Node.js</span>
+                    <span>Django</span><span>PostgreSQL</span><span>MongoDB</span>
+                    <span>Python</span><span>Docker</span>
+                  </div>
+                ))}
+              </div>
             </div>
+            <label className="motion-control">
+              <input type="checkbox" aria-label="Pause scrolling tools" />
+              <span className="motion-symbol" aria-hidden="true" />
+            </label>
           </div>
         </section>
         <section id="work" className="work section-shell">
@@ -566,21 +585,20 @@ export default function App() {
           <div className="section-heading">
             <div>
               <h2>
-                Beyond software.
+                Skills & service.
               </h2>
             </div>
             <p>
-              I completed the Millennium Fellowship in 2025, then reviewed
-              40 applications for the 2026 admissions committee.
-              The certificates and recommendation below document that work.
+              Certifications alongside my Millennium Fellowship and admissions
+              committee work. Each document is available to read below.
             </p>
           </div>
           <div className="credential-list">
-            {credentials.map((credential, index) => (
-              <article className="credential" key={credential.file}>
+            {credentials.map((credential) => (
+              <article className="credential" key={credential.href}>
                 <a
                   className="credential-image"
-                  href={`/documents/${credential.file}`}
+                  href={credential.href}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Open the ${credential.type.toLowerCase()} for ${credential.title}`}
@@ -589,7 +607,7 @@ export default function App() {
                     src={`/images/${credential.image}`}
                     alt={`${credential.type} for Tousif Rahman Anto`}
                     width="1200"
-                    height={index === 2 ? 1553 : 750}
+                    height={credential.image === "recommendation.jpg" ? 1553 : 750}
                     loading="lazy"
                   />
                   <span>
@@ -604,7 +622,7 @@ export default function App() {
                   <p className="issuer">{credential.issuer}</p>
                   <a
                     className="text-link"
-                    href={`/documents/${credential.file}`}
+                    href={credential.href}
                     target="_blank"
                     rel="noreferrer"
                   >

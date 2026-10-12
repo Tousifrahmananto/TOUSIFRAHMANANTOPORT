@@ -62,14 +62,20 @@ h1 { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(54px, 5.2
 .hero-facts dd span { color: var(--accent); font-size: 24px; vertical-align: top; margin-left: 4px; }
 .hero-facts > div:nth-child(2) dd span, .hero-facts > div:last-child dd span { display: block; font-size: 13px; line-height: 1.7; letter-spacing: 0; }
 .hero-facts dt { font-size: 11px; line-height: 1.6; text-transform: uppercase; letter-spacing: .1em; margin-top: 12px; }
-.expertise-strip { position: relative; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
-.expertise-track { display: flex; width: max-content; animation: expertise-scroll 34s linear infinite; }
+.expertise-strip { display: grid; grid-template-columns: 150px minmax(0, 1fr) 72px; align-items: center; gap: 16px; padding: 0 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.expertise-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.expertise-window { min-width: 0; overflow: hidden; mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
+.expertise-track { display: flex; width: max-content; animation: expertise-scroll 42s linear infinite; }
 .expertise-strip:hover .expertise-track, .expertise-strip:has(input:checked) .expertise-track { animation-play-state: paused; }
-.motion-control { position: absolute; right: 0; bottom: 0; z-index: 2; display: flex; align-items: center; gap: 5px; padding: 5px 10px; background: var(--paper); font-size: 10px; cursor: pointer; }
-.motion-control input { accent-color: var(--accent); margin: 0; }
-.expertise-set { display: flex; flex-shrink: 0; }
-.expertise-set span { display: flex; align-items: center; gap: 24px; padding: 20px 34px; border-right: 1px solid var(--line); font-family: "Instrument Serif", Georgia, serif; font-size: 30px; white-space: nowrap; }
-.expertise-set span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.expertise-set { display: flex; flex-shrink: 0; align-items: center; }
+.expertise-set span { display: flex; align-items: center; gap: 30px; padding: 25px 30px 25px 0; font-size: 18px; font-weight: 500; letter-spacing: -.025em; white-space: nowrap; }
+.expertise-set span::before { content: "/"; font-size: 14px; font-weight: 400; color: #b7b5ab; }
+.motion-control { position: relative; justify-self: end; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; color: var(--muted); }
+.motion-control:hover { color: var(--accent); border-color: var(--accent); }
+.motion-control input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.motion-control:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
+.motion-symbol { width: 10px; height: 12px; border-left: 2px solid currentColor; border-right: 2px solid currentColor; pointer-events: none; }
+.motion-control:has(input:checked) .motion-symbol { width: 0; height: 0; border: 6px solid transparent; border-left: 9px solid currentColor; margin-left: 7px; }
 @keyframes expertise-scroll { to { transform: translateX(-50%); } }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
 .section-heading h2 { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(40px, 4.3vw, 64px); font-weight: 400; letter-spacing: -.035em; line-height: 1.1; }
@@ -284,7 +290,10 @@ body:has(dialog[open]) { overflow: hidden; }
   .hero-facts dd span { font-size: 17px; }
   .hero-facts dt { font-size: 9px; letter-spacing: .03em; }
   .hero-facts > div:last-child dd span { display: block; font-size: 11px; }
-  .expertise-set span { font-size: 25px; padding: 17px 24px; gap: 18px; }
+  .expertise-strip { grid-template-columns: 80px minmax(0, 1fr) 36px; gap: 10px; padding: 0 20px; }
+  .expertise-label { font-size: 9px; letter-spacing: .06em; }
+  .expertise-set span { font-size: 16px; padding: 22px 22px 22px 0; gap: 22px; }
+  .motion-control { width: 34px; height: 34px; }
   .section-shell { padding: 52px 24px; }
   .section-heading { display: block; }
   .section-heading h2 { font-size: 42px; }
@@ -344,8 +353,10 @@ body:has(dialog[open]) { overflow: hidden; }
   [data-reveal] { opacity: 1 !important; translate: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+  .expertise-strip { grid-template-columns: 1fr; gap: 8px; padding: 18px 24px; }
+  .expertise-window { mask-image: none; }
   .expertise-track { width: 100%; }
   .expertise-set { flex-wrap: wrap; width: 100%; }
   .expertise-set + .expertise-set { display: none; }
-  .expertise-set span { flex: 1; justify-content: center; font-size: 22px; padding: 14px; }
+  .expertise-set span { flex: none; font-size: 16px; padding: 10px 20px 10px 0; gap: 16px; }
 }
