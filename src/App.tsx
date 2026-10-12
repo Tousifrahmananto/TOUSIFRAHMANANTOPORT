@@ -193,7 +193,7 @@ const credentials = [
     issuer: "Millennium Campus Network",
     date: "2026 · Completed",
     image: "gac-certificate.jpg",
-    href: "/documents/gac-appreciation.pdf",
+    href: "https://yajgqpnfknhujdpdwkoq.supabase.co/storage/v1/object/public/pdfs/d9833da2-365e-426b-9571-525afa74bc62/Tousif_Rahman_Anto_GAC_Certificate-g125iIBaAKHzwbokOMsdta0BgCIx0z.pdf",
     description:
       "Served on the 2026 committee, reviewing 40 fellowship applications.",
   },
@@ -203,7 +203,7 @@ const credentials = [
     issuer: "Emmanuel Opatola, Admissions Manager",
     date: "10 August 2026",
     image: "recommendation.jpg",
-    href: "/documents/mcn-recommendation.pdf",
+    href: "https://yajgqpnfknhujdpdwkoq.supabase.co/storage/v1/object/public/pdfs/d9833da2-365e-426b-9571-525afa74bc62/Tousif_Rahman_Anto_MCN_Letter_of_Recommendation-jADB5rSToauVuNWP20ebvBfor7dt4J.pdf",
     description:
       "MCN’s recommendation recognises my judgment and reliability during the admissions cycle and confirms that I completed my service.",
   },
