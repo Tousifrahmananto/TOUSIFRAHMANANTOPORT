@@ -251,58 +251,6 @@ button:focus-visible {
 .primary-link:active {
   transform: scale(0.97);
 }
-.exploration {
-  margin-top: 32px;
-  max-width: 292px;
-}
-.exploration-label {
-  font-size: 13px;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  min-height: 20px;
-}
-.exploration-track {
-  display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 6px;
-  margin-top: 3px;
-}
-.exploration-track button {
-  height: 32px;
-  background: none;
-  border: 0;
-  padding: 10px 0;
-}
-.exploration-track button > span {
-  display: block;
-  position: relative;
-  height: 3px;
-  background: #d2d2c6;
-  overflow: hidden;
-}
-.exploration-track button > span::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 250ms var(--ease-out);
-}
-.exploration-track button.is-explored > span::after {
-  transform: scaleX(1);
-}
-.exploration-hint {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-.explored-note {
-  color: var(--accent);
-  font-size: 13px;
-  margin-left: auto;
-  align-self: center;
-}
 .portfolio-content {
   min-width: 0;
 }
@@ -1037,9 +985,6 @@ body:has(dialog[open]) {
   .text-link:hover > span {
     transform: translate(2px, -2px);
   }
-  .exploration-track button:hover > span {
-    background: #a7a99a;
-  }
   .credential-image:hover {
     color: var(--accent);
   }
@@ -1069,9 +1014,6 @@ button:active:not([role="tab"]) {
   .availability {
     margin: 24px 0 20px;
     font-size: 14px;
-  }
-  .exploration {
-    margin-top: 24px;
   }
 }
 @media (max-width: 1150px) {
@@ -1214,12 +1156,6 @@ button:active:not([role="tab"]) {
     justify-self: start;
     font-size: 16px;
   }
-  .exploration {
-    grid-column: 1/-1;
-    margin-top: 25px;
-    max-width: 340px;
-    width: 100%;
-  }
   .section-shell {
     padding: 64px 0;
   }
@@ -1293,15 +1229,6 @@ button:active:not([role="tab"]) {
   .availability {
     font-size: 14px;
   }
-  .exploration {
-    max-width: none;
-  }
-  .exploration-track button {
-    height: 40px;
-  }
-  .exploration-hint {
-    font-size: 12px;
-  }
   .section-heading h2 {
     font-size: 48px;
   }
@@ -1355,9 +1282,6 @@ button:active:not([role="tab"]) {
   .project-links a,
   .project-links button {
     font-size: 14px;
-  }
-  .explored-note {
-    margin-left: 0;
   }
   .project {
     padding-bottom: 32px;

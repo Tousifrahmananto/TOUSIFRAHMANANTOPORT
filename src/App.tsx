@@ -100,11 +100,9 @@ function CaseStudy({
 function ProjectRow({
   project,
   open,
-  explored,
 }: {
   project: Project;
   open: (project: Project) => void;
-  explored: boolean;
 }) {
   const illustration = [
     "afk",
@@ -163,11 +161,6 @@ function ProjectRow({
           <a href={project.repo} target="_blank" rel="noreferrer">
             Source <Arrow />
           </a>
-          {explored && (
-            <span className="explored-note">
-              Explored <span aria-hidden="true">✓</span>
-            </span>
-          )}
         </div>
       </div>
     </article>
@@ -228,13 +221,6 @@ const credentials = [
 
 export default function App() {
   useScrollMotion();
-  const [explored, setExplored] = useState<string[]>([]);
-  const openProject = (project: Project) => {
-    setSelected(project);
-    setExplored((previous) =>
-      previous.includes(project.id) ? previous : [...previous, project.id],
-    );
-  };
   const [filter, setFilter] = useState("All work");
   const [selected, setSelected] = useState<Project | null>(null);
   const [active, setActive] = useState("home");
@@ -412,35 +398,6 @@ export default function App() {
             >
               Read my résumé <Arrow />
             </a>
-            <div
-              className="exploration"
-              aria-label="Project exploration tracker"
-            >
-              <p className="exploration-label" role="status">
-                {explored.length === projects.length
-                  ? "Every project explored. Thank you."
-                  : `${explored.length} / ${projects.length} projects explored`}
-              </p>
-              <div className="exploration-track">
-                {projects.map((project) => (
-                  <button
-                    key={project.id}
-                    type="button"
-                    className={
-                      explored.includes(project.id) ? "is-explored" : ""
-                    }
-                    aria-label={`${explored.includes(project.id) ? "Revisit" : "Explore"} ${project.title}`}
-                    title={project.title}
-                    onClick={() => openProject(project)}
-                  >
-                    <span />
-                  </button>
-                ))}
-              </div>
-              <p className="exploration-hint">
-                Open a project. Leave a little mark.
-              </p>
-            </div>
           </div>
         </aside>
         <div className="portfolio-content">
@@ -482,8 +439,7 @@ export default function App() {
                 <ProjectRow
                   key={project.id}
                   project={project}
-                  open={openProject}
-                  explored={explored.includes(project.id)}
+                  open={setSelected}
                 />
               ))}
             </div>
