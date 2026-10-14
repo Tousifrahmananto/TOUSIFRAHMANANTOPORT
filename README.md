@@ -1,6 +1,6 @@
 # Tousif Rahman Anto — Portfolio
 
-A personal portfolio built with React, TypeScript and Vite. The approved Figma direction pairs a sticky introduction rail with large project previews. Warm neutrals, editorial typography and burnt orange carry through the research, experience, interactive skills and credentials. Once-only project reveals add subtle motion. No new runtime dependencies.
+A personal portfolio built with React, TypeScript and Vite. The approved Figma direction pairs a sticky introduction rail with large project previews. Cool whites, editorial typography and electric cobalt carry through the research, experience, interactive skills and credentials. Once-only project reveals add subtle motion. No new runtime dependencies.
 
 ## Run locally
 
