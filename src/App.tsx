@@ -11,7 +11,7 @@ import {
 } from "./data";
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 18 18 6M6 6h12v12" /></svg>;
 }
 function Clock() {
   const [time, setTime] = useState("");
@@ -100,9 +100,11 @@ function CaseStudy({
 function ProjectRow({
   project,
   open,
+  explored,
 }: {
   project: Project;
   open: (project: Project) => void;
+  explored: boolean;
 }) {
   const illustration = [
     "afk",
@@ -112,7 +114,14 @@ function ProjectRow({
     "workshop",
   ].includes(project.id);
   return (
-    <article id={`project-${project.id}`} className={`project project-${project.id}`}>
+    <article
+      id={`project-${project.id}`}
+      className={`project project-${project.id}`}
+    >
+      <div className="project-heading">
+        <h3>{project.title}</h3>
+        <p>{project.label}</p>
+      </div>
       <button
         className="project-visual"
         onClick={() => open(project)}
@@ -123,7 +132,8 @@ function ProjectRow({
           alt={`${project.title} ${illustration ? "interface illustration" : "website preview"}`}
           width="1440"
           height="1000"
-          loading="lazy"
+          loading={project.id === "codeswitch" ? "eager" : "lazy"}
+          fetchPriority={project.id === "codeswitch" ? "high" : "auto"}
         />
         {illustration && (
           <span className="preview-caption">
@@ -135,14 +145,6 @@ function ProjectRow({
         </span>
       </button>
       <div className="project-copy">
-        <div className="project-meta">
-          <span>{project.category}</span>
-          <span>
-            {project.live ? "Live demo + source" : "Source available"}
-          </span>
-        </div>
-        <p className="project-label">{project.label}</p>
-        <h3>{project.title}</h3>
         <p className="project-summary">{project.summary}</p>
         <ul className="stack" aria-label="Technology stack">
           {project.stack.map((tech) => (
@@ -161,6 +163,11 @@ function ProjectRow({
           <a href={project.repo} target="_blank" rel="noreferrer">
             Source <Arrow />
           </a>
+          {explored && (
+            <span className="explored-note">
+              Explored <span aria-hidden="true">✓</span>
+            </span>
+          )}
         </div>
       </div>
     </article>
@@ -207,11 +214,17 @@ const credentials = [
     description:
       "MCN’s recommendation recognises my judgment and reliability during the admissions cycle and confirms that I completed my service.",
   },
-
 ];
 
 export default function App() {
   useScrollMotion();
+  const [explored, setExplored] = useState<string[]>([]);
+  const openProject = (project: Project) => {
+    setSelected(project);
+    setExplored((previous) =>
+      previous.includes(project.id) ? previous : [...previous, project.id],
+    );
+  };
   const [filter, setFilter] = useState("All work");
   const [selected, setSelected] = useState<Project | null>(null);
   const [active, setActive] = useState("home");
@@ -231,26 +244,53 @@ export default function App() {
       target.scrollIntoView({ block: "start" });
       if (!target.hasAttribute("tabindex")) {
         target.setAttribute("tabindex", "-1");
-        target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+        target.addEventListener(
+          "blur",
+          () => target.removeAttribute("tabindex"),
+          { once: true },
+        );
       }
       target.focus({ preventScroll: true });
     };
     const navigate = (event: MouseEvent) => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const anchor = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>("a[href]") : null;
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const anchor =
+        event.target instanceof Element
+          ? event.target.closest<HTMLAnchorElement>("a[href]")
+          : null;
       if (!anchor || anchor.target || anchor.hasAttribute("download")) return;
       const url = new URL(anchor.href);
-      if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+      if (
+        url.origin !== location.origin ||
+        url.pathname !== location.pathname ||
+        url.search !== location.search ||
+        !url.hash
+      )
+        return;
       const target = findTarget(url.hash);
       if (!target) return;
       event.preventDefault();
       scrollToTarget(target);
     };
     const initialTarget = findTarget(location.hash);
-    const frame = initialTarget ? requestAnimationFrame(() => {
-      scrollToTarget(initialTarget);
-      history.replaceState(history.state, "", location.pathname + location.search);
-    }) : undefined;
+    const frame = initialTarget
+      ? requestAnimationFrame(() => {
+          scrollToTarget(initialTarget);
+          history.replaceState(
+            history.state,
+            "",
+            location.pathname + location.search,
+          );
+        })
+      : undefined;
     document.addEventListener("click", navigate);
     return () => {
       if (frame !== undefined) cancelAnimationFrame(frame);
@@ -266,7 +306,7 @@ export default function App() {
       { rootMargin: "-15% 0px -60% 0px" },
     );
     document
-      .querySelectorAll("main > section[id]")
+      .querySelectorAll(".portfolio-content > section[id]")
       .forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
@@ -285,7 +325,9 @@ export default function App() {
   );
   return (
     <>
-      <div className="reading-progress" aria-hidden="true"><span /></div>
+      <div className="reading-progress" aria-hidden="true">
+        <span />
+      </div>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -295,415 +337,459 @@ export default function App() {
         </a>
         <nav aria-label="Main navigation">
           {[
-            ["work", "Work"], ["about", "About"], ["skills", "Skills"],
-            ["credentials", "Credentials"], ["contact", "Contact"],
+            ["work", "Work"],
+            ["about", "About"],
+            ["skills", "Skills"],
+            ["credentials", "Credentials"],
+            ["contact", "Contact"],
           ].map(([id, label]) => (
-            <a key={id} href={`#${id}`} className={active === id ? "current" : ""}
-              aria-current={active === id ? "location" : undefined}>{label}</a>
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? "current" : ""}
+              aria-current={active === id ? "location" : undefined}
+            >
+              {label}
+            </a>
           ))}
         </nav>
-        <a className="header-resume" href="/documents/tousif-rahman-anto-resume.pdf"
-          target="_blank" rel="noreferrer">Résumé <Arrow /></a>
+        <a
+          className="header-resume"
+          href="/documents/tousif-rahman-anto-resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Résumé <Arrow />
+        </a>
       </header>
-      <main id="main">
-        <section id="home" className="hero">
-          <div className="hero-intro">
-            <div className="hero-copy">
-              <p className="hello">Full-stack developer · Dhaka, Bangladesh</p>
-              <h1>I build software<br />for <span className="accent">everyday work.</span></h1>
-              <p className="hero-description">
-                I’m Tousif. I build web applications and tools that help people
-                get things done.
+      <main id="main" className="portfolio-layout">
+        <aside id="home" className="identity-rail" aria-label="About Tousif">
+          <div className="identity-sticky">
+            <img
+              className="identity-portrait"
+              src="/images/portrait.jpg"
+              alt="Tousif Rahman Anto in Dhaka"
+              width="152"
+              height="190"
+              fetchPriority="high"
+            />
+            <h1>
+              Tousif
+              <br />
+              Rahman Anto.
+            </h1>
+            <p className="identity-role">
+              Full-stack developer.
+              <br />
+              BRAC University CSE graduate.
+              <br />
+              Based in Dhaka.
+            </p>
+            <p className="identity-focus">
+              Web applications, developer tools and local language models.
+            </p>
+            <p className="availability">
+              <span className="status-dot" />
+              Open to internships and
+              <br />
+              entry-level engineering roles.
+            </p>
+            <a
+              className="primary-link"
+              href="/documents/tousif-rahman-anto-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Read my résumé <Arrow />
+            </a>
+            <div
+              className="exploration"
+              aria-label="Project exploration tracker"
+            >
+              <p className="exploration-label" role="status">
+                {explored.length === projects.length
+                  ? "Every project explored. Thank you."
+                  : `${explored.length} / ${projects.length} projects explored`}
               </p>
-              <p className="hero-detail">
-                My work has taken me from teaching coding to running esports
-                operations and studying language models at BRAC University.
-                These days, I’m looking for my next engineering role.
-              </p>
-              <div className="hero-actions">
-                <a className="primary-link" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
-                <a className="text-link" href="/documents/tousif-rahman-anto-resume.pdf"
-                  target="_blank" rel="noreferrer">Read my résumé <Arrow /></a>
-              </div>
-              <span className="availability"><span className="status-dot" />Open to engineering opportunities</span>
-            </div>
-            <div className="hero-portrait">
-              <img src="/images/portrait.jpg" alt="Tousif Rahman Anto in Dhaka"
-                width="750" height="1000" fetchPriority="high" />
-              <span className="portrait-note">Tousif Rahman Anto</span>
-            </div>
-            <dl className="hero-facts">
-              <div><dt>Projects to explore</dt><dd>{projects.length}<span>↗</span></dd></div>
-              <div><dt>Thesis team</dt><dd>5<span> members</span></dd></div>
-              <div><dt>Education</dt><dd>BRAC<span> CSE graduate</span></dd></div>
-            </dl>
-          </div>
-          <div className="expertise-strip">
-            <span className="expertise-label">Tools I use</span>
-            <div className="expertise-window" role="img"
-              aria-label="React, Next.js, Node.js, Django, PostgreSQL, MongoDB, Python and Docker">
-              <div className="expertise-track" aria-hidden="true">
-                {[0, 1].map((copy) => (
-                  <div className="expertise-set" key={copy}>
-                    <span>React</span><span>Next.js</span><span>Node.js</span>
-                    <span>Django</span><span>PostgreSQL</span><span>MongoDB</span>
-                    <span>Python</span><span>Docker</span>
-                  </div>
+              <div className="exploration-track">
+                {projects.map((project) => (
+                  <button
+                    key={project.id}
+                    type="button"
+                    className={
+                      explored.includes(project.id) ? "is-explored" : ""
+                    }
+                    aria-label={`${explored.includes(project.id) ? "Revisit" : "Explore"} ${project.title}`}
+                    title={project.title}
+                    onClick={() => openProject(project)}
+                  >
+                    <span />
+                  </button>
                 ))}
               </div>
-            </div>
-            <label className="motion-control">
-              <input type="checkbox" aria-label="Pause scrolling tools" />
-              <span className="motion-symbol" aria-hidden="true" />
-            </label>
-          </div>
-        </section>
-        <section id="work" className="work section-shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow accent">From idea to implementation</p>
-              <h2>Selected work<span className="accent">.</span></h2>
+              <p className="exploration-hint">
+                Open a project. Leave a little mark.
+              </p>
             </div>
           </div>
-          <div className="work-toolbar">
-            <div className="filters" role="group" aria-label="Filter projects">
-              {["All work", "Web Apps", "AI & Tools", "Mobile"].map((name) => (
-                <button
-                  key={name}
-                  onClick={() => setFilter(name)}
-                  aria-pressed={filter === name}
-                  className={filter === name ? "active" : ""}
-                >
-                  {name}
-                  {name === "All work" && (
-                    <span>{projects.length}</span>
-                  )}
-                </button>
+        </aside>
+        <div className="portfolio-content">
+          <section id="work" className="work section-shell">
+            <div className="section-heading">
+              <div>
+                <h2>Software I’ve built.</h2>
+                <p className="section-intro">
+                  Explore the interfaces and the engineering behind them.
+                </p>
+              </div>
+            </div>
+            <div className="work-toolbar">
+              <div
+                className="filters"
+                role="group"
+                aria-label="Filter projects"
+              >
+                {["All work", "Web Apps", "AI & Tools", "Mobile"].map(
+                  (name) => (
+                    <button
+                      key={name}
+                      onClick={() => setFilter(name)}
+                      aria-pressed={filter === name}
+                      className={filter === name ? "active" : ""}
+                    >
+                      {name}
+                      {name === "All work" && <span>{projects.length}</span>}
+                    </button>
+                  ),
+                )}
+              </div>
+              <span className="work-count" aria-live="polite">
+                {visible.length} {visible.length === 1 ? "project" : "projects"}
+              </span>
+            </div>
+            <div className="project-list" key={filter}>
+              {visible.map((project) => (
+                <ProjectRow
+                  key={project.id}
+                  project={project}
+                  open={openProject}
+                  explored={explored.includes(project.id)}
+                />
               ))}
             </div>
-            <span className="work-count" aria-live="polite">
-              {visible.length} {visible.length === 1 ? "project" : "projects"}
-            </span>
-          </div>
-          <div className="project-list" key={filter}>
-            {visible.map((project) => (
-              <ProjectRow
-                key={project.id}
-                project={project}
-                open={setSelected}
-              />
-            ))}
-          </div>
-          <a
-            className="all-source"
-            href={github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Explore all my repositories on GitHub.</span>
-            <Arrow />
-          </a>
-          <div id="research" className="research">
-            <div className="research-kicker">
-              <span className="eyebrow accent">
-                My final-year research
-              </span>
-              <span>2025 to 2026</span>
+            <a
+              className="all-source"
+              href={github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>Explore all my repositories on GitHub.</span>
+              <Arrow />
+            </a>
+            <div id="research" className="research">
+              <div className="research-kicker">
+                <span className="eyebrow accent">My final-year research</span>
+                <span>2025 to 2026</span>
+              </div>
+              <div className="research-content">
+                <div>
+                  <h3>Building a chatbot that checks its own replies.</h3>
+                  <p>
+                    My thesis focused on an emotional-support chatbot that runs
+                    locally. I led a team of five. We brought model adaptation,
+                    response checks and conversation memory together in one
+                    system for non-clinical use.
+                  </p>
+                  <p>
+                    I built four checks for empathy consistency, response drift,
+                    support quality and support consistency. Before sending a
+                    reply, the system uses those checks to decide whether to try
+                    again or return a fallback response. Correction stays within
+                    set limits.
+                  </p>
+                  <p>
+                    I prepared the conversation data and brought in Mistral,
+                    Qwen, DeepSeek and Llama for comparison. Using 4-bit QLoRA,
+                    we adapted 7B–8B models on a consumer GPU with 12 GB of
+                    memory.
+                  </p>
+                  <p>
+                    I also built the Gradio interface and added user ratings,
+                    identifier redaction and optional conversation memory in
+                    MongoDB. Accepted conversations helped shape later prompts
+                    and summaries. The model’s weights stayed fixed while people
+                    chatted with it.
+                  </p>
+                  <span className="stack">
+                    Python / QLoRA / Mistral / Gradio / MongoDB
+                  </span>
+                  <a
+                    className="text-link"
+                    href="/documents/tousif-rahman-anto-resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Read about my thesis <Arrow />
+                  </a>
+                </div>
+                <div className="research-facts">
+                  <div>
+                    <strong>4</strong>
+                    <span>Checks before a reply is sent</span>
+                  </div>
+                  <div>
+                    <strong>12 GB</strong>
+                    <span>GPU memory used to adapt the models</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="research-content">
+          </section>
+          <section
+            className="additional-work section-shell"
+            aria-labelledby="educore-title"
+          >
+            <h3 id="educore-title">EduCore: a learning platform.</h3>
+            <p>
+              I built EduCore with Next.js and Strapi. The platform supports
+              four user roles, course enrollment, saved progress and auto-graded
+              quizzes. I also built its content workflows and role management
+              features and added platform statistics.
+            </p>
+            <span className="stack">
+              Next.js / TypeScript / Strapi / REST APIs / RBAC
+            </span>
+          </section>
+          <section id="about" className="about section-shell">
+            <div className="section-heading">
               <div>
-                <h3>
-                  Building a chatbot that checks its own replies.
-                </h3>
-                <p>
-                  My thesis focused on an emotional-support chatbot that runs locally.
-                  I led a team of five. We brought model adaptation, response checks
-                  and conversation memory together in one system for non-clinical use.
+                <h2>How I got here.</h2>
+              </div>
+            </div>
+            <div className="about-layout">
+              <div className="portrait-frame">
+                <img
+                  src="/images/portrait.jpg"
+                  alt="Tousif Rahman Anto outdoors in Dhaka"
+                  width="750"
+                  height="1000"
+                  loading="lazy"
+                />
+                <div className="portrait-caption">
+                  <span>TOUSIF RAHMAN ANTO</span>
+                  <span>DHAKA, BANGLADESH</span>
+                </div>
+              </div>
+              <div className="about-copy">
+                <p className="about-lead">
+                  I’ve worked in classrooms as well as esports and research.
                 </p>
                 <p>
-                  I built four checks for empathy consistency, response drift,
-                  support quality and support consistency. Before sending a reply,
-                  the system uses those checks to decide whether to try again or
-                  return a fallback response. Correction stays within set limits.
+                  At BRAC University, I studied Computer Science & Engineering
+                  and built web and mobile applications. For my final-year
+                  thesis, I led a team of five building an emotional-support
+                  chatbot that runs locally, checks its replies and remembers
+                  conversations.
                 </p>
                 <p>
-                  I prepared the conversation data and brought in Mistral, Qwen,
-                  DeepSeek and Llama for comparison. Using 4-bit QLoRA, we adapted
-                  7B–8B models on a consumer GPU with 12 GB of memory.
+                  I also taught Python at Dreamers Academy and developed a
+                  curriculum for Lua and Roblox Studio. At AFK Productions, I
+                  worked on tournament software for a production team. Teaching
+                  and esports showed me different ways people use software and
+                  what they need it to do.
                 </p>
-                <p>
-                  I also built the Gradio interface and added user ratings,
-                  identifier redaction and optional conversation memory in MongoDB.
-                  Accepted conversations helped shape later prompts and summaries.
-                  The model’s weights stayed fixed while people chatted with it.
-                </p>
-                <span className="stack">Python / QLoRA / Mistral / Gradio / MongoDB</span>
                 <a
                   className="text-link"
                   href="/documents/tousif-rahman-anto-resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Read about my thesis <Arrow />
+                  Read my résumé <Arrow />
                 </a>
               </div>
-              <div className="research-facts">
-                <div>
-                  <strong>4</strong>
-                  <span>Checks before a reply is sent</span>
-                </div>
-                <div>
-                  <strong>12 GB</strong>
-                  <span>GPU memory used to adapt the models</span>
-                </div>
+            </div>
+            <div className="experience">
+              <div className="experience-heading">
+                <h3>Experience & education</h3>
               </div>
-            </div>
-          </div>
-        </section>
-        <section
-          className="additional-work section-shell"
-          aria-labelledby="educore-title"
-        >
-          <span className="eyebrow accent">Building for education</span>
-          <h3 id="educore-title">EduCore: a learning platform.</h3>
-          <p>
-            I built EduCore with Next.js and Strapi. The platform supports
-            four user roles, course enrollment, saved progress and auto-graded
-            quizzes. I also built its content workflows and role management
-            features and added platform statistics.
-          </p>
-          <span className="stack">
-            Next.js / TypeScript / Strapi / REST APIs / RBAC
-          </span>
-        </section>
-        <section id="about" className="about section-shell">
-          <div className="section-heading">
-            <div>
-              <h2>
-                How I got here.
-              </h2>
-            </div>
-          </div>
-          <div className="about-layout">
-            <div className="portrait-frame">
-              <img
-                src="/images/portrait.jpg"
-                alt="Tousif Rahman Anto outdoors in Dhaka"
-                width="750"
-                height="1000"
-                loading="lazy"
-              />
-              <div className="portrait-caption">
-                <span>TOUSIF RAHMAN ANTO</span>
-                <span>DHAKA, BANGLADESH</span>
-              </div>
-            </div>
-            <div className="about-copy">
-              <p className="about-lead">
-                I’ve worked in classrooms as well as esports and research.
-              </p>
-              <p>
-                At BRAC University, I studied Computer Science & Engineering
-                and built web and mobile applications. For my final-year
-                thesis, I led a team of five building an emotional-support chatbot
-                that runs locally, checks its replies and remembers conversations.
-              </p>
-              <p>
-                I also taught Python at Dreamers Academy and developed a
-                curriculum for Lua and Roblox Studio. At AFK Productions, I
-                worked on tournament software for a production team. Teaching
-                and esports showed me different ways people use software and
-                what they need it to do.
-              </p>
-              <a
-                className="text-link"
-                href="/documents/tousif-rahman-anto-resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Read my résumé <Arrow />
-              </a>
-            </div>
-          </div>
-          <div className="experience">
-            <div className="experience-heading">
-              <h3>Experience & education</h3>
-            </div>
-            <div className="experience-list">
-              {[
-                [
-                  "2026 · Completed",
-                  "Global Admissions Committee Member",
-                  "Millennium Campus Network",
-                  "Reviewed 40 applications during the 2026 admissions cycle.",
-                ],
-                [
-                  "2025 to 2026",
-                  "Research Project Lead",
-                  "Local emotional-support conversational AI",
-                  "Led a team of five building a local emotional-support chatbot with response checks and conversation memory.",
-                ],
-                [
-                  "2024 to 2026",
-                  "Coding Instructor & Curriculum Developer",
-                  "Dreamers Academy",
-                  "Taught Python and developed a Lua / Roblox Studio curriculum.",
-                ],
-                [
-                  "Class of 2025 · Completed",
-                  "Millennium Fellow",
-                  "UNAI & Millennium Campus Network",
-                  "Project SAFE with RICH Club Bangladesh.",
-                ],
-                [
-                  "Project work",
-                  "Full-Stack Developer",
-                  "AFK Productions",
-                  "Built tournament management software for a production team of 25+ members.",
-                ],
-                [
-                  "Graduated",
-                  "BSc, Computer Science & Engineering",
-                  "BRAC University",
-                  "Focus: machine learning, web development and cybersecurity.",
-                ],
-              ].map(([date, title, org, description]) => (
-                <div className="experience-row" key={title}>
-                  <span>{date}</span>
-                  <div>
-                    <h4>{title}</h4>
-                    <p>{org}</p>
-                    <p className="experience-description">{description}</p>
+              <div className="experience-list">
+                {[
+                  [
+                    "2026 · Completed",
+                    "Global Admissions Committee Member",
+                    "Millennium Campus Network",
+                    "Reviewed 40 applications during the 2026 admissions cycle.",
+                  ],
+                  [
+                    "2025 to 2026",
+                    "Research Project Lead",
+                    "Local emotional-support conversational AI",
+                    "Led a team of five building a local emotional-support chatbot with response checks and conversation memory.",
+                  ],
+                  [
+                    "2024 to 2026",
+                    "Coding Instructor & Curriculum Developer",
+                    "Dreamers Academy",
+                    "Taught Python and developed a Lua / Roblox Studio curriculum.",
+                  ],
+                  [
+                    "Class of 2025 · Completed",
+                    "Millennium Fellow",
+                    "UNAI & Millennium Campus Network",
+                    "Project SAFE with RICH Club Bangladesh.",
+                  ],
+                  [
+                    "Project work",
+                    "Full-Stack Developer",
+                    "AFK Productions",
+                    "Built tournament management software for a production team of 25+ members.",
+                  ],
+                  [
+                    "Graduated",
+                    "BSc, Computer Science & Engineering",
+                    "BRAC University",
+                    "Focus: machine learning, web development and cybersecurity.",
+                  ],
+                ].map(([date, title, org, description]) => (
+                  <div className="experience-row" key={title}>
+                    <span>{date}</span>
+                    <div>
+                      <h4>{title}</h4>
+                      <p>{org}</p>
+                      <p className="experience-description">{description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-        <Skills onProjectLink={() => setFilter("All work")} />
-        <section id="credentials" className="credentials section-shell">
-          <div className="section-heading">
-            <div>
-              <h2>
-                Skills & service.
-              </h2>
+          </section>
+          <Skills onProjectLink={() => setFilter("All work")} />
+          <section id="credentials" className="credentials section-shell">
+            <div className="section-heading">
+              <div>
+                <h2>Skills & service.</h2>
+              </div>
+              <p>
+                Certifications alongside my Millennium Fellowship and admissions
+                committee work. Each document is available to read below.
+              </p>
             </div>
-            <p>
-              Certifications alongside my Millennium Fellowship and admissions
-              committee work. Each document is available to read below.
-            </p>
-          </div>
-          <div className="credential-list">
-            {credentials.map((credential) => (
-              <article className="credential" key={credential.href}>
-                <a
-                  className="credential-image"
-                  href={credential.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Open the ${credential.type.toLowerCase()} for ${credential.title}`}
-                >
-                  <img
-                    src={`/images/${credential.image}`}
-                    alt={`${credential.type} for Tousif Rahman Anto`}
-                    width="1200"
-                    height={credential.image === "recommendation.jpg" ? 1553 : 750}
-                    loading="lazy"
-                  />
-                  <span>
-                    View original PDF <Arrow />
-                  </span>
-                </a>
-                <div className="credential-copy">
-                  <span className="eyebrow">{credential.date}</span>
-                  <h3>{credential.title}</h3>
-                  <p className="credential-type">{credential.type}</p>
-                  <p>{credential.description}</p>
-                  <p className="issuer">{credential.issuer}</p>
+            <div className="credential-list">
+              {credentials.map((credential) => (
+                <article className="credential" key={credential.href}>
                   <a
-                    className="text-link"
+                    className="credential-image"
                     href={credential.href}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`Open the ${credential.type.toLowerCase()} for ${credential.title}`}
                   >
-                    Read the document <Arrow />
+                    <img
+                      src={`/images/${credential.image}`}
+                      alt={`${credential.type} for Tousif Rahman Anto`}
+                      width="1200"
+                      height={
+                        credential.image === "recommendation.jpg" ? 1553 : 750
+                      }
+                      loading="lazy"
+                    />
+                    <span>
+                      View original PDF <Arrow />
+                    </span>
                   </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-        <section id="contact" className="contact section-shell">
-          <div className="contact-heading">
-            <h2>
-              Let’s talk about{" "}
-              <br />
-              <span className="accent">what’s next.</span>
-            </h2>
-          </div>
-          <div className="contact-bottom">
-            <div>
-              <p>
-                I’m looking for my next engineering role.{" "}
-                <br />
-                If my work fits your team or project, send me an email.
-              </p>
-              <div className="email-row">
-                <a href={`mailto:${email}`}>{email}</a>
-                <button
-                  className={`copy-email${copied ? " is-copied" : ""}`}
-                  onClick={copy}
-                  aria-label={copied ? "Email copied. Copy again" : "Copy email address"}
-                  type="button"
-                >
-                  <span className="copy-icon" aria-hidden="true">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
+                  <div className="credential-copy">
+                    <span className="eyebrow">{credential.date}</span>
+                    <h3>{credential.title}</h3>
+                    <p className="credential-type">{credential.type}</p>
+                    <p>{credential.description}</p>
+                    <p className="issuer">{credential.issuer}</p>
+                    <a
+                      className="text-link"
+                      href={credential.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Read the document <Arrow />
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+          <section id="contact" className="contact section-shell">
+            <div className="contact-heading">
+              <h2>Let’s build something useful.</h2>
+            </div>
+            <div className="contact-bottom">
+              <div>
+                <p>
+                  I’m looking for an internship or entry-level engineering role.{" "}
+                  <br />
+                  If my work fits your team or project, send me an email.
+                </p>
+                <div className="email-row">
+                  <a href={`mailto:${email}`}>{email}</a>
+                  <button
+                    className={`copy-email${copied ? " is-copied" : ""}`}
+                    onClick={copy}
+                    aria-label={
+                      copied ? "Email copied. Copy again" : "Copy email address"
+                    }
+                    type="button"
                   >
-                    <rect x="8" y="8" width="12" height="12" rx="1" />
-                    <path d="M16 8V4H4v12h4" />
-                  </svg>
+                    <span className="copy-icon" aria-hidden="true">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        fill="none"
+                        strokeWidth="1.5"
+                        aria-hidden="true"
+                      >
+                        <rect x="8" y="8" width="12" height="12" rx="1" />
+                        <path d="M16 8V4H4v12h4" />
+                      </svg>
+                    </span>
+                    <span className="copy-label" aria-hidden="true">
+                      Copied
+                    </span>
+                  </button>
+                </div>
+                <p className="copy-status" role="status">
+                  <span className={copied ? "sr-only" : undefined}>
+                    {copyStatus}
                   </span>
-                  <span className="copy-label" aria-hidden="true">Copied</span>
-                </button>
+                </p>
               </div>
-              <p className="copy-status" role="status">
-                <span className={copied ? "sr-only" : undefined}>{copyStatus}</span>
-              </p>
-            </div>
-            <div className="socials">
-              <a href={github} target="_blank" rel="noreferrer">
-                GitHub <Arrow />
-              </a>
-              <a href={linkedin} target="_blank" rel="noreferrer">
-                LinkedIn <Arrow />
-              </a>
-              {xProfile && (
-                <a href={xProfile} target="_blank" rel="noreferrer">
-                  X / Twitter <Arrow />
+              <div className="socials">
+                <a href={github} target="_blank" rel="noreferrer">
+                  GitHub <Arrow />
                 </a>
-              )}
-              <a
-                href="/documents/tousif-rahman-anto-resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Résumé <Arrow />
-              </a>
+                <a href={linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn <Arrow />
+                </a>
+                {xProfile && (
+                  <a href={xProfile} target="_blank" rel="noreferrer">
+                    X / Twitter <Arrow />
+                  </a>
+                )}
+                <a
+                  href="/documents/tousif-rahman-anto-resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Résumé <Arrow />
+                </a>
+              </div>
             </div>
-          </div>
-        </section>
-        <footer className="footer section-shell">
-          <span>© {new Date().getFullYear()} Tousif Rahman Anto</span>
-          <Clock />
-          <a href="#home">Back to top ↑</a>
-        </footer>
+          </section>
+          <footer className="footer section-shell">
+            <span>© {new Date().getFullYear()} Tousif Rahman Anto</span>
+            <Clock />
+            <a href="#home">Back to top ↑</a>
+          </footer>
+        </div>
       </main>
       <CaseStudy project={selected} close={() => setSelected(null)} />
     </>

@@ -2,6 +2,11 @@ node_modules/
 dist/
 output/
 .playwright-cli/
+.impeccable/review/
 *.tsbuildinfo
 .env*
 
+DESIGN.md
+PRODUCT.md
+/.impeccable
+/tests

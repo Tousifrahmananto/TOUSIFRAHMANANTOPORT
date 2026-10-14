@@ -6,31 +6,52 @@ export default function useScrollMotion() {
     const main = document.querySelector("main");
     if (!main) return;
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const syncPreference = () => root.classList.toggle("motion-ready", !preference.matches);
+    const syncPreference = () =>
+      root.classList.toggle("motion-ready", !preference.matches);
     syncPreference();
     preference.addEventListener("change", syncPreference);
+    const keyboardInput = () => root.classList.add("keyboard-navigation");
+    const pointerInput = () => root.classList.remove("keyboard-navigation");
+    addEventListener("keydown", keyboardInput);
+    addEventListener("pointerdown", pointerInput, { passive: true });
 
     const registered = new WeakSet<Element>();
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-revealed");
-        observer.unobserve(entry.target);
-      }
-    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -24px 0px" },
+    );
     const selectors = [
-      ".hero-intro > div", ".section-heading", ".project",
-      ".research-content", ".additional-work", ".about-layout",
-      ".experience-row", ".skills-layout", ".credential",
-      ".contact-heading", ".contact-bottom",
+      ".identity-sticky > img",
+      ".identity-sticky > h1",
+      ".section-heading",
+      ".project-heading",
+      ".project-visual",
+      ".research-content",
+      ".additional-work",
+      ".about-layout",
+      ".skills-layout",
+      ".credential-image",
+      ".contact-heading",
+      ".contact-bottom",
     ].join(",");
     const register = () => {
       main.querySelectorAll<HTMLElement>(selectors).forEach((element) => {
         if (registered.has(element)) return;
         registered.add(element);
         element.dataset.reveal = "";
-        const index = Array.from(element.parentElement?.children ?? []).indexOf(element);
-        element.style.setProperty("--reveal-delay", `${Math.min(Math.max(index, 0), 2) * 55}ms`);
+        const index = Array.from(element.parentElement?.children ?? []).indexOf(
+          element,
+        );
+        element.style.setProperty(
+          "--reveal-delay",
+          `${Math.min(Math.max(index, 0), 2) * 55}ms`,
+        );
         observer.observe(element);
       });
     };
@@ -40,7 +61,8 @@ export default function useScrollMotion() {
     const updateProgress = () => {
       frame = 0;
       const distance = root.scrollHeight - innerHeight;
-      const progress = distance > 0 ? Math.min(1, Math.max(0, scrollY / distance)) : 0;
+      const progress =
+        distance > 0 ? Math.min(1, Math.max(0, scrollY / distance)) : 0;
       root.style.setProperty("--scroll-progress", String(progress));
     };
     const scheduleProgress = () => {
@@ -51,7 +73,9 @@ export default function useScrollMotion() {
         for (const node of record.removedNodes) {
           if (!(node instanceof Element)) continue;
           observer.unobserve(node);
-          node.querySelectorAll("[data-reveal]").forEach((element) => observer.unobserve(element));
+          node
+            .querySelectorAll("[data-reveal]")
+            .forEach((element) => observer.unobserve(element));
         }
       }
       register();
@@ -70,6 +94,9 @@ export default function useScrollMotion() {
       removeEventListener("resize", scheduleProgress);
       main.removeEventListener("load", scheduleProgress, true);
       preference.removeEventListener("change", syncPreference);
+      removeEventListener("keydown", keyboardInput);
+      removeEventListener("pointerdown", pointerInput);
+      root.classList.remove("keyboard-navigation");
       root.classList.remove("motion-ready");
       root.style.removeProperty("--scroll-progress");
     };
