@@ -185,6 +185,16 @@ const credentials = [
       "Passed the HackerRank SQL (Advanced) skills certification test.",
   },
   {
+    title: "REST API (Intermediate)",
+    type: "Certificate of accomplishment",
+    issuer: "HackerRank",
+    date: "15 October 2026",
+    image: "rest-api-intermediate-certificate.jpg",
+    href: "https://yajgqpnfknhujdpdwkoq.supabase.co/storage/v1/object/public/pdfs/d9833da2-365e-426b-9571-525afa74bc62/rest_api_intermediate_certificate-3959363cc12f44ce96ba749767e8cbdf.pdf",
+    description:
+      "Passed the HackerRank REST API (Intermediate) skills certification test.",
+  },
+  {
     title: "Millennium Fellowship",
     type: "Certificate of completion",
     issuer: "UNAI & Millennium Campus Network",
