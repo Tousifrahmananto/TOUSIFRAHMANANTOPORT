@@ -5,6 +5,23 @@ output/
 .impeccable/review/
 *.tsbuildinfo
 .env*
+!.env.example
+
+# Generated caches, reports and local logs
+.cache/
+.npm/
+coverage/
+*.log
+*.local
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Superseded by the hosted document links; keep local copies
+/public/documents/gac-appreciation.pdf
+/public/documents/mcn-recommendation.pdf
 
 DESIGN.md
 PRODUCT.md
