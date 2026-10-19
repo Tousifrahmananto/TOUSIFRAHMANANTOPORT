@@ -13,6 +13,25 @@ import {
 function Arrow() {
   return <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 18 18 6M6 6h12v12" /></svg>;
 }
+function ProjectNotes({ project }: { project: Project }) {
+  return <>
+    <p className="case-intro">{project.summary}</p>
+    {[
+      ["The challenge", project.challenge],
+      ["What I built", project.approach],
+      ["Details & scope", project.detail],
+    ].map(([heading, body]) => (
+      <div className="case-note" key={heading}>
+        <h3>{heading}</h3><p>{body}</p>
+      </div>
+    ))}
+    <p className="stack">{project.stack.join(" / ")}</p>
+    <div className="project-links">
+      {project.live && <a href={project.live} target="_blank" rel="noreferrer">Live site <Arrow /></a>}
+      <a href={project.repo} target="_blank" rel="noreferrer">View source <Arrow /></a>
+    </div>
+  </>;
+}
 function Clock() {
   const [time, setTime] = useState("");
   useEffect(() => {
@@ -70,28 +89,8 @@ function CaseStudy({
           </div>
           <p className="eyebrow accent">{project.label}</p>
           <h2 id="case-title">{project.title}</h2>
-          <p className="case-intro">{project.summary}</p>
-          {[
-            ["The challenge", project.challenge],
-            ["What I built", project.approach],
-            ["Details & scope", project.detail],
-          ].map(([heading, body]) => (
-            <div className="case-note" key={heading}>
-              <h3>{heading}</h3>
-              <p>{body}</p>
-            </div>
-          ))}
-          <p className="stack">{project.stack.join(" / ")}</p>
-          <div className="project-links">
-            {project.live && (
-              <a href={project.live} target="_blank" rel="noreferrer">
-                Live site <Arrow />
-              </a>
-            )}
-            <a href={project.repo} target="_blank" rel="noreferrer">
-              View source <Arrow />
-            </a>
-          </div>
+          <ProjectNotes project={project} />
+          <a className="text-link case-permalink" href={`/work/${project.id}/`}>Open full project page <Arrow /></a>
         </div>
       )}
     </dialog>
@@ -150,9 +149,13 @@ function ProjectRow({
           ))}
         </ul>
         <div className="project-links">
-          <button onClick={() => open(project)}>
+          <a href={`/work/${project.id}/`} onClick={(event) => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            open(project);
+          }}>
             Behind the build <span aria-hidden="true">→</span>
-          </button>
+          </a>
           {project.live && (
             <a href={project.live} target="_blank" rel="noreferrer">
               Live site <Arrow />
@@ -219,7 +222,7 @@ const credentials = [
   },
 ];
 
-export default function App() {
+function HomePage() {
   useScrollMotion();
   const [filter, setFilter] = useState("All work");
   const [selected, setSelected] = useState<Project | null>(null);
@@ -375,14 +378,15 @@ export default function App() {
               Rahman Anto.
             </h1>
             <p className="identity-role">
-              Full-stack developer.
+              Backend & full-stack developer.
               <br />
               BRAC University CSE graduate.
               <br />
               Based in Dhaka.
             </p>
             <p className="identity-focus">
-              Web applications, developer tools and local language models.
+              I build APIs and web applications with Node.js, TypeScript,
+              Express and Django REST Framework.
             </p>
             <p className="availability">
               <span className="status-dot" />
@@ -611,10 +615,10 @@ export default function App() {
                     "Built tournament management software for a production team of 25+ members.",
                   ],
                   [
-                    "Graduated",
+                    "September 2026 · Graduated",
                     "BSc, Computer Science & Engineering",
                     "BRAC University",
-                    "Focus: machine learning, web development and cybersecurity.",
+                    "Coursework: data structures and algorithms, object-oriented programming, databases, operating systems and software engineering.",
                   ],
                 ].map(([date, title, org, description]) => (
                   <div className="experience-row" key={title}>
@@ -760,4 +764,25 @@ export default function App() {
       <CaseStudy project={selected} close={() => setSelected(null)} />
     </>
   );
+}
+
+export default function App({ path = "/" }: { path?: string }) {
+  path = path.replace(/\/index\.html$/, "/");
+  if (path === "/") return <HomePage />;
+  const project = projects.find((item) => path.replace(/\/$/, "") === `/work/${item.id}`);
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <header className="site-header">
+      <a className="brand" href="/">Tousif Rahman Anto<span className="accent">.</span></a>
+      <nav aria-label="Main navigation"><a href="/#work">All work</a><a href="/#contact">Contact</a></nav>
+    </header>
+    <main id="main" className="project-page case-content">
+      <nav className="case-top" aria-label="Breadcrumb"><a href="/">Home</a><span>{project?.title ?? "Page not found"}</span></nav>
+      <p className="eyebrow">{project?.label ?? "404"}</p>
+      <h1>{project?.title ?? "This page doesn’t exist."}</h1>
+      {project ? <ProjectNotes project={project} /> : <p className="case-intro">You can find my projects and contact details on the homepage.</p>}
+      <a className="text-link case-permalink" href="/#work">Explore all projects <Arrow /></a>
+    </main>
+    <footer className="project-page-footer"><span>Built by Tousif Rahman Anto · Dhaka, Bangladesh</span><a href={`mailto:${email}`}>Get in touch <Arrow /></a></footer>
+  </>;
 }

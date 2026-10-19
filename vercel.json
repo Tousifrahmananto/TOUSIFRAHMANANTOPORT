@@ -7,6 +7,5 @@
     { "source": "/projects.html", "destination": "/#work", "permanent": true },
     { "source": "/hobbies", "destination": "/#about", "permanent": true },
     { "source": "/hobbies.html", "destination": "/#about", "permanent": true }
-  ],
-  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }]
+  ]
 }

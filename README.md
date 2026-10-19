@@ -16,7 +16,7 @@ npm run build
 npm run preview
 ```
 
-The production output is `dist/`. Vercel is configured in `vercel.json` to run the build and serve that directory. Older `/projects` and `/hobbies` URLs redirect to the corresponding homepage sections. Changes are local until committed and deployed.
+The production output is `dist/`. The build prerenders the homepage and eight project pages, then generates metadata, structured data, a sitemap, robots.txt and an optional llms.txt index. React hydrates the same content for interactions. Vercel serves the generated files without a blanket SPA rewrite; unknown paths use the 404 page. Older `/projects` and `/hobbies` URLs redirect to the corresponding homepage sections. Changes are local until committed and deployed. See [SEO.md](SEO.md) for the audit and search-console launch steps. Run `npm run check:seo` after building.
 
 ## Edit content
 
@@ -24,8 +24,8 @@ The production output is `dist/`. Vercel is configured in `vercel.json` to run t
 - The showcase contains eight original projects reviewed against public repository READMEs and source: CodeSwitch, AFK Productions, The Archive, MediPay, Game Physics Lab, The Chuckle Chronicles, Geo Entity Manager, and Workshop Appointments. Counts and category filters derive from the project data. Starter scaffolds, the small exercise bundle, profile/portfolio repos, and forks are not represented as original product work. EduCore and research remain separately sourced from the CV.
 - `src/App.tsx`: introduction rail, about, availability, experience, education, research and credentials. Millennium Fellowship and Global Admissions Committee roles are completed. The CV establishes BRAC graduate status and Dreamers Academy dates of 2024–2026.
 - `src/styles.css`: palette, typography, responsive layouts, and reduced-motion support.
-- `public/images/`: full-color screenshots, portrait, and certificate previews. Source-only projects have clearly labeled interface illustrations with sample data. MediPay's listed live deployment returned 404 when checked, so only the source is linked. All eight projects have direct repository links; only verified live projects show a live link.
-- `public/documents/`: résumé, Millennium Fellowship completion certificate, GAC appreciation certificate, and MCN recommendation. The recommendation confirms 40 application reviews in the completed 2026 cycle. The downloadable résumé is the updated 11 October 2026 CV from `D:/CV/Tousif_Rahman_Anto_Resume.pdf`. Thesis content follows its contribution-focused research description: interpretable response checks, bounded correction, conversational memory and local QLoRA adaptation.
+- `public/images/`: full-color screenshots, portrait, certificate previews and the 1200 × 630 social preview. Interface illustrations are clearly labeled as sample data. All eight projects have repository links. The current CV supplies MediPay's `saas-project-client-beta.vercel.app` demo and AFK's `/dashboard` URL.
+- `public/documents/`: résumé and Millennium Fellowship completion certificate, with GAC and MCN documents linked to their supplied hosted PDFs. The downloadable résumé follows `D:/CV/output/pdf/Tousif_Rahman_Anto_Application_CV.pdf`; factual updates use `D:/CV/Tousif_Rahman_Anto_Application_CV.tex`. No CGPA is displayed. Thesis content retains its contribution-focused description: interpretable response checks, bounded correction, conversational memory and local QLoRA adaptation.
 - `public/fonts/`: self-hosted font files with their licenses. No third-party font requests at runtime.
 
 ## Validation

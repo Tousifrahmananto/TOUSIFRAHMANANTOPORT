@@ -28,33 +28,33 @@ export const projects: Project[] = [
     label: "AI-assisted code conversion",
     summary:
       "I built CodeSwitch to convert code between programming languages. It uses an AI engine with a rule-based fallback when the model service is unavailable.",
-    stack: ["React", "TypeScript", "Django", "LLM APIs"],
+    stack: ["Python", "Django REST Framework", "React", "TypeScript"],
     live: "https://code-switchgg.vercel.app/",
     repo: `${github}/CodeSwitch`,
     challenge:
       "Code translation still needs to work when model providers hit rate limits or go offline. I also needed to keep the browser editor quick to load.",
     approach:
-      "I built two conversion paths: one uses multiple AI providers and the other follows conversion rules. The React frontend loads Monaco Editor only when needed. Django handles provider failover, authentication and code execution requests.",
+      "I built conversion across five programming languages with configurable OpenAI, Groq and Gemini providers and a rule-based fallback. API-key retries share one 20-second request budget. A cancellable subprocess prevents stalled HTTP calls from keeping a request running indefinitely. The React frontend lazy-loads Monaco Editor. Django REST Framework handles authentication with httpOnly JWT cookies and login-attempt lockouts.",
     detail:
-      "CodeSwitch supports Python, C, C++, Java and JavaScript. It also includes shareable snippets and learning modules. AI output needs review. The fallback covers a smaller set of conversion patterns.",
+      "CodeSwitch supports Python, C, C++, Java and JavaScript. I passed 163 backend tests covering authentication, conversion safety, provider failures and request boundaries. The backend is deployed on Railway and the frontend on Vercel. AI output needs review. The rule-based fallback covers a smaller set of conversion patterns.",
   },
   {
     id: "afk",
     number: "02",
-    title: "AFK Productions",
+    title: "AFK Arena",
     category: "Web Apps",
     label: "Real-time tournament operations",
     summary:
       "I brought registration, team management and live match progression into one esports platform. It grew out of my work at AFK Productions and the practical demands of tournament days.",
     stack: ["React", "Node.js", "MongoDB", "Socket.IO"],
-    live: "https://afk-productions-frontend.vercel.app/",
+    live: "https://afk-productions-frontend.vercel.app/dashboard",
     repo: `${github}/AFK_PRODUCTIONS`,
     challenge:
       "Players, teams and event staff need to see the same tournament state. I needed clear permissions for each role so they could work together without sharing every control.",
     approach:
       "I automated brackets for single elimination, double elimination and round robin. Socket.IO sends live notifications. Express APIs and role-based permissions give players, team managers, sponsors and admins their own workflows.",
     detail:
-      "The platform includes team rosters, match statistics, galleries and sponsor campaign management. I drew on my role at AFK Productions and my hands-on experience running esports operations.",
+      "Turn-based map selection uses revision checks to reject conflicting actions. Socket.IO delivery is scoped to authorized match participants. I passed 118 backend tests, including a 72-configuration map-selection matrix across two games, three match formats and different map pools, toss results and first actions.",
   },
   {
     id: "archive",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     approach:
       "I used Supabase authentication and verified bearer tokens on the server. A storage abstraction lets the app use either Vercel Blob or Supabase Storage. Users can search, browse recent and shared files, delete documents and create public sharing links.",
     detail:
-      "Protected API routes identify the owner through a verified session rather than a user ID sent by the client. Users can upload, find, view and share documents in the same interface.",
+      "Uploads use user-scoped paths and signed direct uploads. File signatures and a 20 MB limit are checked before files are published. I passed 66 tests across seven test files covering authentication, file routes, upload validation, storage boundaries and rate limiting.",
   },
   {
     id: "medipay",
@@ -82,14 +82,15 @@ export const projects: Project[] = [
     label: "Healthcare billing & settlement",
     summary:
       "I built MediPay to handle hospital billing when patients make partial payments. It keeps invoices, payments, refunds and reconciliation in sync across the billing process.",
-    stack: ["React", "Node.js", "MongoDB", "SSLCOMMERZ"],
-    repo: `${github}/MediPay`,
+    stack: ["Node.js", "TypeScript", "Express", "MongoDB", "React", "SSLCOMMERZ"],
+    live: "https://saas-project-client-beta.vercel.app/",
+    repo: `${github}/SAAS_PROJECT`,
     challenge:
       "Patient records, encounters, invoices and settlements all need to stay consistent. I had to account for partial payments and refunds as well as the usual billing steps.",
     approach:
       "I delivered 16 screens across three release milestones. Immutable invoice snapshots and MongoDB Decimal128 keep financial calculations consistent. Settlement uses transactions and idempotent operations for SSLCOMMERZ and Bangla QR checkout methods.",
     detail:
-      "I added PDF invoices and receipts, CSV reporting and audit events that account for user roles. The preview illustrates the interface with sample data. You can find the implementation in the source repository.",
+      "Unique transaction IDs and paid-status checks inside MongoDB transactions make settlement duplicate-safe. I passed 20 API tests covering validation and access control, including staff privilege escalation, malformed payment notifications and unauthorized billing actions. The preview illustrates the interface with sample data.",
   },
   {
     id: "physics",

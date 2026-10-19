@@ -834,6 +834,32 @@ button:focus-visible {
 .case-dialog::backdrop {
   background: #1c2027a6;
 }
+.project-page {
+  width: min(840px, 100%);
+  margin: 64px auto;
+}
+.project-page h1 {
+  font: 400 clamp(44px, 7vw, 72px)/1.08 "Instrument Serif", Georgia, serif;
+  letter-spacing: -0.02em;
+  margin: 16px 0 28px;
+}
+.project-page .case-top {
+  color: var(--muted);
+  font-size: 15px;
+}
+.case-permalink { margin-top: 24px; }
+.project-page-footer {
+  width: min(760px, calc(100% - 80px));
+  margin: 0 auto 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--muted);
+}
 .case-content {
   padding: 40px;
 }
