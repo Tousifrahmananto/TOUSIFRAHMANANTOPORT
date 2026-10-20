@@ -2,6 +2,8 @@
 
 Checked and implemented locally on 20 October 2026. Production site: https://tousifrahmanantoportfolio.vercel.app/.
 
+Custom-domain migration update: both `https://tousifrahmananto.me/` and `https://www.tousifrahmananto.me/` served the portfolio over HTTPS when checked on 20 October 2026. The live HTML still declared the old Vercel canonical at that point. The build origin and SEO checks now use `https://tousifrahmananto.me`; deploy these changes to update canonical URLs, structured data IDs, social metadata, sitemap, robots.txt and llms.txt together. Historical audit URLs below refer to the original deployment. Configure permanent redirects from www and the original Vercel hostname to the apex custom domain in Vercel, preserving paths. Add and verify the custom domain in Google Search Console and Bing, submit its new sitemap and update external profile links. These dashboard and external-profile changes have not been performed by this code update. Public DNS still resolved to Cloudflare proxy IPs at the time of the check; confirm gray-cloud DNS-only settings or allow cached records to expire.
+
 ## Evidence from the live audit
 
 The homepage returned HTTP 200. Its original HTTP response had an empty React root. Firecrawl could read the rendered portfolio after JavaScript ran, so this was a dependency on rendering rather than proof that Google could not index the page. The project notes were available only through interactive modals. The head contained a title, description and basic Open Graph tags but no canonical, social preview image or JSON-LD. Both `/robots.txt` and `/sitemap.xml` returned 404. A deliberately nonexistent URL returned the homepage with HTTP 200, creating a soft-404 risk.
