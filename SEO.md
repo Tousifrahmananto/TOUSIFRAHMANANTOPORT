@@ -47,6 +47,14 @@ If the domain changes, update the origin in `scripts/prerender.mjs`, regenerate 
 
 ## Primary guidance
 
+### Exact-name search follow-up, 20 October 2026
+
+The user supplied Search Console evidence that the homepage is indexed, Google selected the inspected URL as canonical and ProfilePage markup is valid. That confirms indexing, not placement for the name query. A public search check returned the Millennium Fellowship biography and LinkedIn profile; the portfolio was not returned in that check. Results can differ by search service and user context, so this is not a definitive Google ranking measurement.
+
+Added named WebSite structured data linked to the Person/ProfilePage graph and the verified Millennium Fellowship biography to Person.sameAs. The same external biography is now visibly linked from the Fellowship credential. Preserved the homepage design while retaining a literal space between Tousif and Rahman across its heading line break. Build and SEO checks passed.
+
+The GitHub public profile API reported the correct full name but an empty website field. Add the canonical portfolio URL there and to LinkedIn's Featured/contact links when profile editing is available and authorized. These external profile changes have not been applied as part of this follow-up. Deploy the local website changes before requesting another homepage recrawl. Avoid duplicate name-targeted pages or keyword repetition. No first-position or exact-date ranking promise is supported.
+
 - [Google: generative AI search optimization](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide): useful original content, crawl/index eligibility and technical clarity; no special AI text file requirement or guaranteed inclusion.
 - [Google: JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics): prerendering, crawlable links, canonicals and meaningful HTTP status codes.
 - [Google: ProfilePage structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page).

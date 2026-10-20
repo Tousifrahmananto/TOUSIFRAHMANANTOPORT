@@ -5,6 +5,7 @@ import {
   email,
   github,
   linkedin,
+  fellowshipProfile,
   xProfile,
   projects,
   type Project,
@@ -192,6 +193,7 @@ const credentials = [
   },
   {
     title: "Millennium Fellowship",
+    profile: fellowshipProfile,
     type: "Certificate of completion",
     issuer: "UNAI & Millennium Campus Network",
     date: "Class of 2025",
@@ -373,7 +375,7 @@ function HomePage() {
               fetchPriority="high"
             />
             <h1>
-              Tousif
+              Tousif{" "}
               <br />
               Rahman Anto.
             </h1>
@@ -681,6 +683,11 @@ function HomePage() {
                     >
                       Read the document <Arrow />
                     </a>
+                    {credential.profile && (
+                      <a className="text-link" href={credential.profile} target="_blank" rel="noreferrer">
+                        Tousif Rahman Anto’s fellowship profile <Arrow />
+                      </a>
+                    )}
                   </div>
                 </article>
               ))}

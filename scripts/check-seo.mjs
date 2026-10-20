@@ -18,12 +18,17 @@ for (const url of urls) {
   assert(html.includes('name="twitter:card" content="summary_large_image"'), `Missing social card: ${url}`);
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)?.[1] ?? 'null');
   assert(schema?.['@graph']?.some((item) => item['@type'] === 'Person'), `Missing person: ${url}`);
+  assert(schema['@graph'].some((item) => item['@type'] === 'WebSite' && item.name === 'Tousif Rahman Anto'), `Missing named website: ${url}`);
   assert(!html.includes('<div id="root"></div>'), `Empty app shell: ${url}`);
   assert(html.includes(path === '/' ? 'id="project-medipay"' : 'The challenge'), `Missing static content: ${url}`);
   for (const [, asset] of html.matchAll(/(?:src|href)="(\/(?:assets|images|fonts|documents)\/[^"#?]+)"/g)) await stat(`dist${asset}`);
   for (const [, href] of html.matchAll(/href="(\/work\/[^"#?]+)"/g)) await stat(`dist${href}index.html`);
 }
 const home = await readFile('dist/index.html', 'utf8');
+assert.match(home.match(/<h1[^>]*>(.*?)<\/h1>/s)?.[1].replace(/<[^>]*>/g, ''), /Tousif Rahman Anto/, 'Full name must remain separated in heading text');
+const person = JSON.parse(home.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'].find((item) => item['@type'] === 'Person');
+assert(person.sameAs.includes('https://www.millenniumfellows.org/fellow/2025/brac/tousif-rahman-anto'));
+assert(home.includes('Tousif Rahman Anto’s fellowship profile'), 'Identity reference must also be visible to readers');
 assert(home.includes('https://saas-project-client-beta.vercel.app/'));
 assert(home.includes('https://afk-productions-frontend.vercel.app/dashboard'));
 assert(!home.includes('CGPA'));

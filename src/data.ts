@@ -1,6 +1,7 @@
 export const email = "tousif.rahman.anto@g.bracu.ac.bd";
 export const github = "https://github.com/Tousifrahmananto";
 export const linkedin = "https://www.linkedin.com/in/tousif-rahman-anto/";
+export const fellowshipProfile = "https://www.millenniumfellows.org/fellow/2025/brac/tousif-rahman-anto";
 // Set this to your actual profile URL to show an X / Twitter link.
 export const xProfile: string | null = null;
 

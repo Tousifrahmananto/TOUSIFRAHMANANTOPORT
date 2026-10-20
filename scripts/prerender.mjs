@@ -12,15 +12,20 @@ const server = await createServer({ server: { middlewareMode: true }, appType: '
 
 try {
   const { default: App } = await server.ssrLoadModule('/src/App.tsx');
-  const { projects, github, linkedin } = await server.ssrLoadModule('/src/data.ts');
+  const { projects, github, linkedin, fellowshipProfile } = await server.ssrLoadModule('/src/data.ts');
   const template = await readFile('dist/index.html', 'utf8');
   const person = {
     '@type': 'Person', '@id': `${origin}/#person`, name,
     url: `${origin}/`, jobTitle: role, image: `${origin}/images/portrait.jpg`,
-    description, sameAs: [github, linkedin],
+    description, sameAs: [github, linkedin, fellowshipProfile],
     homeLocation: { '@type': 'Place', name: 'Dhaka, Bangladesh' },
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'BRAC University' },
     knowsAbout: ['JavaScript', 'TypeScript', 'Python', 'Node.js', 'Express', 'Django REST Framework', 'REST APIs', 'Socket.IO', 'MongoDB', 'PostgreSQL', 'React', 'Next.js'],
+  };
+  const website = {
+    '@type': 'WebSite', '@id': `${origin}/#website`, url: `${origin}/`,
+    name, alternateName: `${name} Portfolio`, inLanguage: 'en',
+    publisher: { '@id': person['@id'] },
   };
   const sourceCode = (project) => ({
     '@type': 'SoftwareSourceCode', '@id': `${origin}/work/${project.id}/#project`,
@@ -35,17 +40,19 @@ try {
     const url = `${origin}${path}`;
     const title = missing ? `Page not found | ${name}` : project ? `${project.title}: ${project.label} | ${name}` : `${name} | ${role}`;
     const summary = project ? project.summary : description;
-    const graph = project ? [person, sourceCode(project), {
+    const graph = project ? [person, website, sourceCode(project), {
       '@type': 'WebPage', '@id': url, url, name: title, description: summary,
       mainEntity: { '@id': `${url}#project` }, author: { '@id': person['@id'] },
+      isPartOf: { '@id': website['@id'] },
     }, {
       '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
         { '@type': 'ListItem', position: 2, name: project.title, item: url },
       ],
-    }] : [person, {
+    }] : [person, website, {
       '@type': 'ProfilePage', '@id': `${origin}/#profile`, url: `${origin}/`, name: title,
       mainEntity: { '@id': person['@id'] }, inLanguage: 'en',
+      isPartOf: { '@id': website['@id'] },
       hasPart: projects.map((item) => ({ '@id': `${origin}/work/${item.id}/#project` })),
     }, ...projects.map(sourceCode)];
     const tags = [
