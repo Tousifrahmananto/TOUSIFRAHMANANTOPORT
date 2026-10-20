@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 
-const origin = 'https://tousifrahmananto.me';
+const origin = 'https://www.tousifrahmananto.me';
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 assert.equal(urls.length, 9, 'Homepage and all eight project pages must be discoverable');
